@@ -8,9 +8,9 @@ from ...protocols import Protocols
 
 
 class ZwaveFlow(Pipe):
-    """Represents a pipe for EtherCAT packets."""
+    """Represents a flow for Zwave packets."""
 
-    def __init__(self, packet: ZwavePacket, activity_timeout: int, max_duration: int):
+    def __init__(self, zwave_packet: ZwavePacket, activity_timeout: int, max_duration: int):
         """
         Initializes a new instance of the EtherCatPipe class.
 
@@ -19,8 +19,11 @@ class ZwaveFlow(Pipe):
             activity_timeout (int, optional): The maximum amount of time allowed without receiving any new packets. Defaults to 100000.
             max_duration (int, optional): The maximum amount of time allowed for the pipe to run. Defaults to 1000000.
         """
-        super().__init__(packet=packet, activity_timeout=activity_timeout, max_duration=max_duration)
+        super().__init__(packet=zwave_packet, activity_timeout=activity_timeout, max_duration=max_duration)
         self.protocol = Protocols.Zwave
+        self.__home_id = zwave_packet['HomeId']
+        self.__src_id = zwave_packet['Source']
+        self.__dst_id = zwave_packet['Destination']
 
     def __str__(self) -> str:
         """
@@ -29,7 +32,7 @@ class ZwaveFlow(Pipe):
         Returns:
             str: A string representation of the EtherCatPipe object.
         """
-        return None
+        return f"{self.__home_id}_{self.__src_id}_{self.__dst_id}_{self._start_time}"
 
     def is_ended(self, new_packet_timestamp: datetime) -> bool:
         """

@@ -11,7 +11,7 @@ class Packet(ABC):
     header_bytes: int
     payload_bytes: int
     packet_len: int
-    timestamp: str
+    _timestamp: str
 
     @abstractmethod
     def get_possible_pipe_id() -> str:

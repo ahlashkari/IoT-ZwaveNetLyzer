@@ -3,6 +3,7 @@
 from datetime import datetime
 from typing import List
 from .features.ethercat import *
+from .features.zwave import *
 from .protocols import Protocols
 from .pipe_capturer import Pipe
 
@@ -27,6 +28,11 @@ class FeatureExtractor:
         """
 
         features = {
+            Protocols.Zwave: [
+                ZwaveDuration(),
+                ZwavePacketsCount(),
+
+            ],
             Protocols.EtherCAT: [
                 EtherCATDuration(),
                 PacketsCount(),
@@ -115,7 +121,7 @@ class FeatureExtractor:
         }
         for pipe in pipes:
             features_of_pipe = {
-                "pipe_id": str(pipe),
+                "flow_id": str(pipe),
                 "timestamp": str(pipe.get_timestamp()),
                 "protocol": str(pipe.get_protocol()),
                 "label": label

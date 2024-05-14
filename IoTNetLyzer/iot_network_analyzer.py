@@ -27,7 +27,7 @@ class IoTNetLyzer:
 
         # if it is z-wave: 
         pipe_capturer = ZwaveFlowCapturer(zwave_config=zwave_config)
-        pipe_capturer = PipeCapturer(config=config)
+        # pipe_capturer = PipeCapturer(config=config)
         pipes = pipe_capturer.capture()
         data = FeatureExtractor.execute(pipes=pipes,
                                         floating_point_unit=config.floating_point_unit,
