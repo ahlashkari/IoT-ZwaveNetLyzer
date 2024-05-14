@@ -10,7 +10,7 @@ setuptools.setup(
     version="0.1.0",
     author="Moein Shafi",
     author_email="moeinsh@yorku.ca",
-    description="A network analyzer tool for IoT networks",
+    description="A network analyzer tool for IoT Zwave networks traffic",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/ahlashkari/Z-WaveNetLyzer",

@@ -25,22 +25,24 @@ class ZwavePacket(Packet):
         self.__time = packet_info['Time']
         date_time_str = f"{self.__date} {self.__time}"
         self._timestamp = datetime.strptime(date_time_str, '%Y-%m-%d %I:%M:%S %p')
-        self.__speed = packet_info['Speed']
-        self.__channel = packet_info['Channel']
-        self.__rssi = packet_info['Rssi']
+        self.__speed = float(packet_info['Speed'][:-1]) * 1000
+        self.__channel = int(packet_info['Channel'])
+        self.__rssi = int(packet_info['Rssi'])
         self.__home_id = packet_info['HomeId']
         self.__src_id = packet_info['Source']
         self.__dst_id = packet_info['Destination']
         self.__data = packet_info['Data']
         self.__class = packet_info['Class']
         self.__application = packet_info['Application']
-        self.__payload = packet_info['Payload']
-        self.__is_ack = packet_info['IsAck']
-        self.__is_crc_ok = packet_info['IsCrcOk']
-        self.__is_low = packet_info['IsLow']
-        self.__is_substituted = packet_info['IsSubstituted']
-        self.__is_unknown_header = packet_info['IsUnknownHeader']
-        self.__is_wakeup_beam = packet_info['IsWakeupBeam']
+        # Remove spaces from payload to correctly count hex digit pairs
+        self.__payload = packet_info['Payload'].replace(" ", "")
+        self.__header = self.__calculate_header()
+        self.__is_ack = packet_info['IsAck'].upper() == 'TRUE'
+        self.__is_crc_ok = packet_info['IsCrcOk'].upper() == 'TRUE'
+        self.__is_low = packet_info['IsLow'].upper() == 'TRUE'
+        self.__is_substituted = packet_info['IsSubstituted'].upper() == 'TRUE'
+        self.__is_unknown_header = packet_info['IsUnknownHeader'].upper() == 'TRUE'
+        self.__is_wakeup_beam = packet_info['IsWakeupBeam'].upper() == 'TRUE'
         self.__hex_data = packet_info['Hex Data']
         self.payload_bytes = self.__calculate_payload_size()
         self.header_bytes = self.__calculate_header_size()
@@ -57,14 +59,19 @@ class ZwavePacket(Packet):
     def __calculate_payload_size(self):
         if self.__payload is None:
             return 0
-        # Remove spaces from payload to correctly count hex digit pairs
-        payload_clean = self.__payload.replace(" ", "")
-        return len(payload_clean) // 2
+        return len(self.__payload) // 2
 
     def __calculate_header_size(self):
         hex_data_size = len(self.__hex_data) // 2
         return hex_data_size - self.payload_bytes
-
+    
+    def __calculate_header(self):
+        if self.__payload is None:
+            return self.__hex_data
+        index = self.__hex_data.find(self.__payload)
+        header_data = self.__hex_data[:index]
+        return header_data
+    
     def get_speed(self):
         return self.__speed
 
@@ -94,6 +101,9 @@ class ZwavePacket(Packet):
 
     def get_payload(self):
         return self.__payload
+
+    def get_header(self):
+        return self.__header
 
     def is_ack(self):
         return self.__is_ack

@@ -2,9 +2,11 @@
 
 import statistics
 from scipy import stats
+from statistics import pstdev, variance, mean
 from ...pipe_capturer.pipes import ZwaveFlow
 from ..feature import Feature
 from ...protocols import Protocols
+
 
 class ZwaveTotalHeaderBytes(Feature):
     protocol = Protocols.Zwave
@@ -244,3 +246,83 @@ class ZwaveCoefficientOfVariationPacketLen(Feature):
     def extract(self, zwave_flow: ZwaveFlow) -> float:
         packet_len = [packet.get_packet_len() for packet in zwave_flow.get_packets()]
         return format(stats.variation(packet_len), self.floating_point_unit)
+
+
+class TotalDataFieldSize(Feature):
+    protocol = Protocols.Zwave
+    name = "total_data_field_size"
+    def extract(self, zwave_flow: ZwaveFlow) -> int:
+        data_sizes = [len(packet.get_data()) for packet in zwave_flow.get_packets() if packet.get_data()]
+        return sum(data_sizes)
+
+
+class MaxDataFieldSize(Feature):
+    protocol = Protocols.Zwave
+    name = "max_data_field_size"
+    def extract(self, zwave_flow: ZwaveFlow) -> int:
+        data_sizes = [len(packet.get_data()) for packet in zwave_flow.get_packets() if packet.get_data()]
+        return max(data_sizes)
+
+
+class MinDataFieldSize(Feature):
+    protocol = Protocols.Zwave
+    name = "min_data_field_size"
+    def extract(self, zwave_flow: ZwaveFlow) -> int:
+        data_sizes = [len(packet.get_data()) for packet in zwave_flow.get_packets() if packet.get_data()]
+        return min(data_sizes)
+
+
+class MeanDataFieldSize(Feature):
+    protocol = Protocols.Zwave
+    name = "mean_data_field_size"
+    def extract(self, zwave_flow: ZwaveFlow) -> int:
+        data_sizes = [len(packet.get_data()) for packet in zwave_flow.get_packets() if packet.get_data()]
+        return format(statistics.mean(data_sizes), self.floating_point_unit)
+
+
+class ModeDataFieldSize(Feature):
+    protocol = Protocols.Zwave
+    name = "mode_data_field_size"
+    def extract(self, zwave_flow: ZwaveFlow) -> int:
+        data_sizes = [len(packet.get_data()) for packet in zwave_flow.get_packets() if packet.get_data()]
+        return format(float(stats.mode(data_sizes)[0]), self.floating_point_unit)
+
+
+class VarianceDataFieldSize(Feature):
+    protocol = Protocols.Zwave
+    name = "variance_data_field_size"
+    def extract(self, zwave_flow: ZwaveFlow) -> int:
+        data_sizes = [len(packet.get_data()) for packet in zwave_flow.get_packets() if packet.get_data()]
+        return format(statistics.pvariance(data_sizes), self.floating_point_unit)
+
+
+class StdDataFieldSize(Feature):
+    protocol = Protocols.Zwave
+    name = "std_data_field_size"
+    def extract(self, zwave_flow: ZwaveFlow) -> int:
+        data_sizes = [len(packet.get_data()) for packet in zwave_flow.get_packets() if packet.get_data()]
+        return format(statistics.pstdev(data_sizes), self.floating_point_unit)
+
+
+class SkewnessDataFieldSize(Feature):
+    protocol = Protocols.Zwave
+    name = "skewness_data_field_size"
+    def extract(self, zwave_flow: ZwaveFlow) -> int:
+        data_sizes = [len(packet.get_data()) for packet in zwave_flow.get_packets() if packet.get_data()]
+        return format(stats.skew(data_sizes), self.floating_point_unit)
+
+
+class CoefficientOfVariationDataFieldSize(Feature):
+    protocol = Protocols.Zwave
+    name = "coefficient_of_variation_data_field_size"
+    def extract(self, zwave_flow: ZwaveFlow) -> int:
+        data_sizes = [len(packet.get_data()) for packet in zwave_flow.get_packets() if packet.get_data()]
+        return format(stats.variation(data_sizes), self.floating_point_unit)
+
+
+class MedianDataFieldSize(Feature):
+    protocol = Protocols.Zwave
+    name = "median_data_field_size"
+    def extract(self, zwave_flow: ZwaveFlow) -> int:
+        data_sizes = [len(packet.get_data()) for packet in zwave_flow.get_packets() if packet.get_data()]
+        return format(statistics.median(data_sizes), self.floating_point_unit)
