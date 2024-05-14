@@ -25,7 +25,7 @@ class PipeCapturer:
         packet_counter = 0
         for packet in packet_reader:
             packet_counter += 1
-            iot_netlyzer_packet = PacketFactory.create(packet_info=packet)
+            iot_netlyzer_packet = PacketFactory.create(raw_packet=packet)
             self.add_packet_to_pipe(iot_netlyzer_packet)
             if packet_counter % self.config.read_packets_count_value_log_info == 0:
                     print(f">> {packet_counter} number of packets has been processed so far...")
@@ -59,10 +59,14 @@ class PipeCapturer:
             None
         """
         for packet in packets:
-            pipe_id = packet.get_possible_pipe_id()
+            possible_pipe_ids = packet.get_possible_pipe_ids()
+            pipe_id = possible_pipe_ids[0]
+            alternative_pipe_id = possible_pipe_ids[1]
             if pipe_id not in self.ongoing_pipes:
-                self.create_new_pipe(packet=packet, pipe_id=pipe_id)
-                continue
+                if alternative_pipe_id not in self.ongoing_pipes:
+                    self.create_new_pipe(packet=packet, pipe_id=pipe_id)
+                    continue
+                pipe_id = alternative_pipe_id
 
             pipe: Pipe = self.ongoing_pipes[pipe_id]
             if pipe.is_ended(new_packet_timestamp=packet.get_timestamp()):
@@ -94,7 +98,7 @@ class ZwaveFlowCapturer(PipeCapturer):
         super().__init__(zwave_config)
 
     def capture(self) -> List[Pipe]:
-        with open(self.config.input_file, 'r') as csv_file:
+        with open(self.config.pcap_file_address, 'r') as csv_file:
             csv_reader = csv.DictReader(csv_file, delimiter=';')
             return self.process_packets(csv_reader)
 

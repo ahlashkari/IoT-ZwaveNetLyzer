@@ -2,6 +2,7 @@
 
 from scapy.packet import Packet as ScapyPacket
 from abc import ABC, abstractmethod
+from typing import List
 from ..protocols import Protocols
 
 
@@ -14,8 +15,8 @@ class Packet(ABC):
     _timestamp: str
 
     @abstractmethod
-    def get_possible_pipe_id() -> str:
-        """Get the possible ID of the pipe that the packet belongs to"""
+    def get_possible_pipe_ids() -> List[str]:
+        """Get the possible IDs of the pipe that the packet belongs to"""
         pass
     
     def get_protocol(self):

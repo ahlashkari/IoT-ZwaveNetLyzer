@@ -68,7 +68,6 @@ class FeatureExtractor:
                 EntropyOfHexData(),
                 HexDataPatternLengthVariability(),
                 CrossCorrelationSpeedRSSI(),
-                CrossCorrelationPacketTypesErrors(),
                 TimeSeriesAnalysisPacketIntervals(),
                 PercentagePacketsPerChannel(),
                 PercentageHighSpeedTransmissions(),
@@ -92,7 +91,6 @@ class FeatureExtractor:
                 HeaderComplexity(),
                 PayloadToHeaderRatio(),
                 IncrementalDataChange(),
-                CorrelationBetweenApplicationAndDataSize(),
                 HeaderEntropy(),
                 TemporalStabilityOfClassType(),
                 TemporalStabilityOfApplicationType(),
@@ -248,14 +246,14 @@ class FeatureExtractor:
         }
 
         extracted_data = {
+            Protocols.Zwave: [],
             Protocols.EtherCAT: []
         }
         for pipe in pipes:
             features_of_pipe = {
                 "flow_id": str(pipe),
                 "timestamp": str(pipe.get_timestamp()),
-                "protocol": str(pipe.get_protocol()),
-                "label": label
+                "protocol": str(pipe.get_protocol())
             }
 
             for feature in features[pipe.get_protocol()]:
@@ -263,7 +261,7 @@ class FeatureExtractor:
                     continue
                 feature.set_floating_point_unit(floating_point_unit)
                 features_of_pipe[feature.name] = feature.extract(pipe)
-
+            features_of_pipe["label"] = label
             extracted_data[pipe.get_protocol()].append(features_of_pipe)
 
         return extracted_data

@@ -24,7 +24,7 @@ class PipeFactory:
                                     max_duration=config.max_ethercat_pipe_duration)
 
         if packet.protocol == Protocols.Zwave:
-            new_pipe = ZwaveFlow(packet=packet,
+            new_pipe = ZwaveFlow(zwave_packet=packet,
                                     activity_timeout=config.ethercat_activity_timeout,
                                     max_duration=config.max_ethercat_pipe_duration)
 

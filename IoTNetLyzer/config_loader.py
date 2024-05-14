@@ -69,6 +69,6 @@ class ConfigLoader:
                     "Default values will be used.")
 
 
-class ZwaveConfigLoader:
+class ZwaveConfigLoader(ConfigLoader):
     def __init__(self, zwave_config_file_address: str):
         super().__init__(zwave_config_file_address)

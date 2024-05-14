@@ -21,9 +21,9 @@ class ZwaveFlow(Pipe):
         """
         super().__init__(packet=zwave_packet, activity_timeout=activity_timeout, max_duration=max_duration)
         self.protocol = Protocols.Zwave
-        self.__home_id = zwave_packet['HomeId']
-        self.__src_id = zwave_packet['Source']
-        self.__dst_id = zwave_packet['Destination']
+        self.__home_id = zwave_packet.get_home_id()
+        self.__src_id = zwave_packet.get_src_id()
+        self.__dst_id = zwave_packet.get_dst_id()
 
     def __str__(self) -> str:
         """

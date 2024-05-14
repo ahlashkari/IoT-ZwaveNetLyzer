@@ -360,15 +360,6 @@ class CrossCorrelationSpeedRSSI(Feature):
             return format(corrcoef(speeds, rssis)[0, 1], self.floating_point_unit)
         return 0  # Return 0 correlation if there's insufficient data
 
-class CrossCorrelationPacketTypesErrors(Feature):
-    protocol = Protocols.Zwave
-    name = "cross_correlation_packet_types_errors"
-    def extract(self, zwave_flow: ZwaveFlow) -> float:
-        types = [packet.get_type() for packet in zwave_flow.get_packets()]
-        errors = [1 if not packet.is_crc_ok() else 0 for packet in zwave_flow.get_packets()]
-        if len(types) > 1 and len(errors) > 1:
-            return format(corrcoef(types, errors)[0, 1], self.floating_point_unit)
-        return 0  # Return 0 correlation if there's insufficient data
 
 class TimeSeriesAnalysisPacketIntervals(Feature):
     protocol = Protocols.Zwave
@@ -377,7 +368,7 @@ class TimeSeriesAnalysisPacketIntervals(Feature):
         timestamps = [packet.get_timestamp() for packet in zwave_flow.get_packets()]
         if len(timestamps) < 2:
             return 0  # No intervals to analyze
-        intervals = [t2 - t1 for t1, t2 in zip(timestamps[:-1], timestamps[1:])]
+        intervals = [(t2 - t1).total_seconds() for t1, t2 in zip(timestamps[:-1], timestamps[1:])]
         return sum(intervals) / len(intervals)  # Return average interval
 
 
@@ -572,18 +563,6 @@ class IncrementalDataChange(Feature):
     def extract(self, zwave_flow: ZwaveFlow) -> int:
         data_fields = [packet.get_payload() for packet in zwave_flow.get_packets() if packet.get_payload()]
         return sum(1 for i in range(1, len(data_fields)) if data_fields[i] != data_fields[i-1])
-
-
-class CorrelationBetweenApplicationAndDataSize(Feature):
-    protocol = Protocols.Zwave
-    name = "correlation_between_application_and_data_size"
-    def extract(self, zwave_flow: ZwaveFlow) -> float:
-        applications = [packet.get_application() for packet in zwave_flow.get_packets()]
-        data_sizes = [packet.get_payload_bytes() for packet in zwave_flow.get_packets()]
-        if len(applications) > 1 and len(data_sizes) > 1:
-            return format(corrcoef(applications, data_sizes)[0, 1], self.floating_point_unit)
-        else:
-            return 0
 
 
 class HeaderEntropy(Feature):

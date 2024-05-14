@@ -22,6 +22,6 @@ setuptools.setup(
     ],
     python_requires='>=3.6',
     entry_points={
-        "console_scripts": ["iot-netlyzer = IoTNetLyzer.__main__:main"]
+        "console_scripts": ["zwave-netlyzer = IoTNetLyzer.__main__:main"]
     },
 )

@@ -38,8 +38,8 @@ class PacketFactory:
     @staticmethod
     def find_protocol(raw_packet) -> Protocols:
         """Determine the protocol of the given Scapy packet."""
-        if EtherCat in raw_packet:
-            return Protocols.EtherCAT
-        
-        if Protocols.Zwave in raw_packet:
+        if 'ApiType' in raw_packet:
             return Protocols.Zwave
+
+        if EtherCat in raw_packet:
+            return Protocols.EtherCAT 

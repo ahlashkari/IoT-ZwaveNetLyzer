@@ -24,7 +24,7 @@ class ZwavePacket(Packet):
         self.__date = packet_info['Date']
         self.__time = packet_info['Time']
         date_time_str = f"{self.__date} {self.__time}"
-        self._timestamp = datetime.strptime(date_time_str, '%Y-%m-%d %I:%M:%S %p')
+        self._timestamp = datetime.strptime(date_time_str, '%Y-%m-%d %I:%M:%S.%f')
         self.__speed = float(packet_info['Speed'][:-1]) * 1000
         self.__channel = int(packet_info['Channel'])
         self.__rssi = int(packet_info['Rssi'])
@@ -34,6 +34,7 @@ class ZwavePacket(Packet):
         self.__data = packet_info['Data']
         self.__class = packet_info['Class']
         self.__application = packet_info['Application']
+        self.__hex_data = packet_info['Hex Data']
         # Remove spaces from payload to correctly count hex digit pairs
         self.__payload = packet_info['Payload'].replace(" ", "")
         self.__header = self.__calculate_header()
@@ -43,18 +44,14 @@ class ZwavePacket(Packet):
         self.__is_substituted = packet_info['IsSubstituted'].upper() == 'TRUE'
         self.__is_unknown_header = packet_info['IsUnknownHeader'].upper() == 'TRUE'
         self.__is_wakeup_beam = packet_info['IsWakeupBeam'].upper() == 'TRUE'
-        self.__hex_data = packet_info['Hex Data']
         self.payload_bytes = self.__calculate_payload_size()
         self.header_bytes = self.__calculate_header_size()
 
-    def __contains__(self, item):
-        return (item == Protocols.Zwave)
-
-    def get_possible_pipe_id(self) -> str:
+    def get_possible_pipe_ids(self) -> str:
         """
         Gets the possible ID of the pipe associated with this packet.
         """
-        return f"{self.__home_id}_{self.__src_id}_{self.__dst_id}"
+        return [f"{self.__home_id}_{self.__src_id}_{self.__dst_id}", f"{self.__home_id}_{self.__dst_id}_{self.__src_id}"]
 
     def __calculate_payload_size(self):
         if self.__payload is None:
