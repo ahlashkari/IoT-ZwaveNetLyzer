@@ -37,6 +37,8 @@ class Pipe(ABC):
         self._start_time = packet.get_timestamp()
         self._end_time = packet.get_timestamp()
         self._packets: List[Packet] = []
+        self._forward_packets: List[Packet] = []
+        self._backward_packets: List[Packet] = []
         self.add_packet(packet=packet)
 
     @abstractmethod
@@ -79,6 +81,24 @@ class Pipe(ABC):
             List[Packet]: The list of packets contained in the pipe.
         """
         return self._packets
+    
+    def get_forward_packets(self) -> List[Packet]:
+        """
+        Retrieves the list of forward packets.
+
+        Returns:
+            List[Packet]: The list of forward packets.
+        """
+        return self._forward_packets
+
+    def get_backward_packets(self) -> List[Packet]:
+        """
+        Retrieves the list of backward packets.
+
+        Returns:
+            List[Packet]: The list of backward packets.
+        """
+        return self._backward_packets
 
     def get_timestamp(self) -> float:
         """
@@ -97,7 +117,24 @@ class Pipe(ABC):
             packet (Packet): The packet to be added to the pipe.
         """
         self._packets.append(packet)
+        if self._is_forward_packet(packet):
+            self._forward_packets.append(packet)
+        else:
+            self._backward_packets.append(packet)
+
         self._end_time = packet.get_timestamp()
+
+    def _is_forward_packet(self, packet: Packet) -> bool:
+        """
+        Determines if the given packet is a forward packet.
+        
+        Args:
+            packet (Packet): The packet to evaluate.
+        
+        Returns:
+            bool: True if the packet is a forward packet, False otherwise.
+        """
+        raise NotImplementedError("This method needs to be implemented.")
 
     def get_duration(self) -> float:
         """

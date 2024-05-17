@@ -28,9 +28,7 @@ class IoTNetLyzer:
         # zwave_config = ZwaveConfigLoader(self.__zwave_config_file_address)
         print(f">> Analyzing the {zwave_config.pcap_file_address}...")
 
-        # if it is z-wave: 
         pipe_capturer = ZwaveFlowCapturer(zwave_config=zwave_config)
-        # pipe_capturer = PipeCapturer(config=config)
         pipes = pipe_capturer.capture()
         data = FeatureExtractor.execute(pipes=pipes,
                                         floating_point_unit=zwave_config.floating_point_unit,

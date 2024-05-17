@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 
-from ..pipe_capturer import Pipe
+from typing import List
+from ..pipe_capturer.packet import Packet
 
-def packets_delta_time_calculation(pipe: Pipe):
-    packets_time = [packet.get_timestamp() for packet in pipe.get_packets()]
+def packets_delta_time_calculation(packets: List[Packet]):
+    packets_time = [packet.get_timestamp() for packet in packets]
     if len(packets_time) == 1:
         return [-1]
     sorted_packets_time = sorted(packets_time)

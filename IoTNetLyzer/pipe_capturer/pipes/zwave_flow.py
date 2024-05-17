@@ -19,11 +19,11 @@ class ZwaveFlow(Pipe):
             activity_timeout (int, optional): The maximum amount of time allowed without receiving any new packets. Defaults to 100000.
             max_duration (int, optional): The maximum amount of time allowed for the pipe to run. Defaults to 1000000.
         """
-        super().__init__(packet=zwave_packet, activity_timeout=activity_timeout, max_duration=max_duration)
         self.protocol = Protocols.Zwave
         self.__home_id = zwave_packet.get_home_id()
         self.__src_id = zwave_packet.get_src_id()
         self.__dst_id = zwave_packet.get_dst_id()
+        super().__init__(packet=zwave_packet, activity_timeout=activity_timeout, max_duration=max_duration)
 
     def __str__(self) -> str:
         """
@@ -51,4 +51,21 @@ class ZwaveFlow(Pipe):
             last_packet_timestamp = self._packets[-1].get_timestamp()
             if (new_packet_timestamp - last_packet_timestamp).total_seconds() > self._activity_timeout:
                 return True
+        return False
+    
+    def get_home_id(self):
+        return self.__home_id
+
+    def get_src_id(self):
+        return self.__src_id
+
+    def get_dst_id(self):
+        return self.__dst_id
+    
+    def get_forward_packets(self):
+        return self._forward_packets
+
+    def _is_forward_packet(self, packet: ZwavePacket):
+        if packet.get_src_id() == self.__src_id:
+            return True
         return False
