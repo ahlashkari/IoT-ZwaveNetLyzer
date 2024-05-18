@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="IoTNetLyzer",
+    name="ZwaveNetLyzer",
     version="0.1.0",
     author="Moein Shafi",
     author_email="moeinsh@yorku.ca",
@@ -22,6 +22,6 @@ setuptools.setup(
     ],
     python_requires='>=3.6',
     entry_points={
-        "console_scripts": ["zwave-netlyzer = IoTNetLyzer.__main__:main"]
+        "console_scripts": ["zwave-netlyzer = ZwaveNetLyzer.__main__:main"]
     },
 )

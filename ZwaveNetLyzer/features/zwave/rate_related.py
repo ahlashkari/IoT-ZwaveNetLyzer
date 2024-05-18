@@ -2,9 +2,9 @@
 
 import statistics
 from scipy import stats
-from ...pipe_capturer import Pipe
-from ...pipe_capturer import Packet
-from ...pipe_capturer.pipes import ZwaveFlow
+from ...flow_capturer import Flow
+from ...flow_capturer import Packet
+from ...flow_capturer.flows import ZwaveFlow
 from ..feature import Feature
 from ...protocols import Protocols
 

@@ -1,30 +1,28 @@
 #!/usr/bin/env python3
 
-from datetime import datetime
 from typing import List
-from .features.ethercat import *
 from .features.zwave import *
 from .protocols import Protocols
-from .pipe_capturer import Pipe
+from .flow_capturer import Flow
 
 
 class FeatureExtractor:
-    """A class to extract related features for each protocol from a given list of pipes."""
+    """A class to extract related features for each protocol from a given list of flows."""
 
     @staticmethod
-    def execute(pipes: List[Pipe], floating_point_unit: str, features_ignore_list: List = [],
+    def execute(flows: List[Flow], floating_point_unit: str, features_ignore_list: List = [],
                 label: str = "") -> List:
         """
-        Extract features from a list of pipes.
+        Extract features from a list of flows.
 
         Args:
-            pipes: A list of Pipe objects to extract features from.
+            flows: A list of Flow objects to extract features from.
             floating_point_unit: A string indicating the unit to use for floating-point features.
             features_ignore_list: A list of feature names to ignore during extraction.
             label: A string label to assign to all extracted features.
 
         Returns:
-            A list of dictionaries representing the extracted features, one for each Pipe object in `pipes`.
+            A list of dictionaries representing the extracted features, one for each Flow object in `flows`.
         """
 
         features = {
@@ -428,106 +426,25 @@ class FeatureExtractor:
                 BwdCoefficientOfVariationPacketsTimeDelta(),
 
             ],
-            Protocols.EtherCAT: [
-                EtherCATDuration(),
-                PacketsCount(),
-                EtherCATHeaderBytesRate(),
-                EtherCATPayloadBytesRate(),
-                EtherCATPacketLenRate(),
-                EtherCatPacketsRate(),
-                EtherCATMaxHeaderBytes(),
-                EtherCATTotalHeaderBytes(),
-                EtherCATMinHeaderBytes(),
-                EtherCATMeanHeaderBytes(),
-                EtherCATModeHeaderBytes(),
-                EtherCATVarianceHeaderBytes(),
-                EtherCATStandardDeviationHeaderBytes(),
-                EtherCATMedianHeaderBytes(),
-                EtherCATSkewnessHeaderBytes(),
-                EtherCATCoefficientOfVariationHeaderBytes(),
-                EtherCATMaxPayloadBytes(),
-                EtherCATTotalPayloadBytes(),
-                EtherCATMinPayloadBytes(),
-                EtherCATMeanPayloadBytes(),
-                EtherCATModePayloadBytes(),
-                EtherCATVariancePayloadBytes(),
-                EtherCATStandardDeviationPayloadBytes(),
-                EtherCATMedianPayloadBytes(),
-                EtherCATSkewnessPayloadBytes(),
-                EtherCATCoefficientOfVariationPayloadBytes(),
-                EtherCATMaxPacketLen(),
-                EtherCATTotalPacketLen(),
-                EtherCATMinPacketLen(),
-                EtherCATMeanPacketLen(),
-                EtherCATModePacketLen(),
-                EtherCATVariancePacketLen(),
-                EtherCATStandardDeviationPacketLen(),
-                EtherCATMedianPacketLen(),
-                EtherCATSkewnessPacketLen(),
-                EtherCATCoefficientOfVariationPacketLen(),
-                EtherCATMaxPacketsTimeDelta(),
-                EtherCATMinPacketsTimeDelta(),
-                EtherCATMeanPacketsTimeDelta(),
-                EtherCATModePacketsTimeDelta(),
-                EtherCATVariancePacketsTimeDelta(),
-                EtherCATStandardDeviationPacketsTimeDelta(),
-                EtherCATMedianPacketsTimeDelta(),
-                EtherCATSkewnessPacketsTimeDelta(),
-                EtherCATCoefficientOfVariationPacketsTimeDelta(),
-                EtherCATTotalDataLen(),
-                EtherCATMaxDataLen(),
-                EtherCATMinDataLen(),
-                EtherCATMeanDataLen(),
-                EtherCATModeDataLen(),
-                EtherCATVarianceDataLen(),
-                EtherCATStandardDeviationDataLen(),
-                EtherCATMedianDataLen(),
-                EtherCATSkewnessDataLen(),
-                EtherCATCoefficientOfVariationDataLen(),
-                EtherCATNumberOfUniqueCommands(),
-                EtherCATUniqueCommands(),
-                EtherCATNumberOfNOPCommands(),
-                EtherCATNumberOfAPRDCommands(),
-                EtherCATNumberOfAPWRCommands(),
-                EtherCATNumberOfAPRWCommands(),
-                EtherCATNumberOfFPRDCommands(),
-                EtherCATNumberOfFPWRCommands(),
-                EtherCATNumberOfFPRWCommands(),
-                EtherCATNumberOfBRDCommands(),
-                EtherCATNumberOfBWRCommands(),
-                EtherCATNumberOfBRWCommands(),
-                EtherCATNumberOfLRDCommands(),
-                EtherCATNumberOfLWRCommands(),
-                EtherCATNumberOfLRWCommands(),
-                EtherCATNumberOfARMWCommands(),
-                EtherCATNumberOfDuplicateIndices(),
-                EtherCATNumberOfCirculatingDatagrams(),
-                EtherCATNumberOfCirculatingDatagrams(),
-                EtherCATNumberOfLastDatagrams(),
-                EtherCATNumberOfNotLastDatagrams(),
-                EtherCATUniqueInterruptRequestsValues(),
-                EtherCATUniqueWorkingCounterValues(),
-                # EtherCATDataValues(),
-            ]
         }
 
         extracted_data = {
             Protocols.Zwave: [],
-            Protocols.EtherCAT: []
         }
-        for pipe in pipes:
-            features_of_pipe = {
-                "flow_id": str(pipe),
-                "timestamp": str(pipe.get_timestamp()),
-                "protocol": str(pipe.get_protocol())
+
+        for flow in flows:
+            features_of_flow = {
+                "flow_id": str(flow),
+                "timestamp": str(flow.get_timestamp()),
+                "protocol": str(flow.get_protocol())
             }
 
-            for feature in features[pipe.get_protocol()]:
+            for feature in features[flow.get_protocol()]:
                 if feature.name in features_ignore_list:
                     continue
                 feature.set_floating_point_unit(floating_point_unit)
-                features_of_pipe[feature.name] = feature.extract(pipe)
-            features_of_pipe["label"] = label
-            extracted_data[pipe.get_protocol()].append(features_of_pipe)
+                features_of_flow[feature.name] = feature.extract(flow)
+            features_of_flow["label"] = label
+            extracted_data[flow.get_protocol()].append(features_of_flow)
 
         return extracted_data

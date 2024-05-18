@@ -2,22 +2,22 @@
     
 from typing import Any
 from datetime import datetime
-from ..pipe import Pipe
+from ..flow import Flow
 from ..packets import ZwavePacket
 from ...protocols import Protocols
 
 
-class ZwaveFlow(Pipe):
+class ZwaveFlow(Flow):
     """Represents a flow for Zwave packets."""
 
     def __init__(self, zwave_packet: ZwavePacket, activity_timeout: int, max_duration: int):
         """
-        Initializes a new instance of the EtherCatPipe class.
+        Initializes a new instance of the ZwaveFlow class.
 
         Args:
-            packet (EtherCatPacket): The initial packet to add to the pipe.
+            packet (ZwavePacket): The initial packet to add to the flow.
             activity_timeout (int, optional): The maximum amount of time allowed without receiving any new packets. Defaults to 100000.
-            max_duration (int, optional): The maximum amount of time allowed for the pipe to run. Defaults to 1000000.
+            max_duration (int, optional): The maximum amount of time allowed for the flow to run. Defaults to 1000000.
         """
         self.protocol = Protocols.Zwave
         self.__home_id = zwave_packet.get_home_id()
@@ -27,22 +27,22 @@ class ZwaveFlow(Pipe):
 
     def __str__(self) -> str:
         """
-        Returns a string representation of the EtherCatPipe object.
+        Returns a string representation of the ZwaveFlow object.
 
         Returns:
-            str: A string representation of the EtherCatPipe object.
+            str: A string representation of the ZwaveFlow object.
         """
         return f"{self.__home_id}_{self.__src_id}_{self.__dst_id}_{self._start_time}"
 
     def is_ended(self, new_packet_timestamp: datetime) -> bool:
         """
-        Determines whether the pipe has ended.
+        Determines whether the flow has ended.
 
         Args:
             new_packet_timestamp (datetime): The timestamp of the latest packet received.
 
         Returns:
-            bool: True if the pipe has ended, False otherwise.
+            bool: True if the flow has ended, False otherwise.
         """
         duration = (new_packet_timestamp - self._start_time).total_seconds()
         if duration > self._max_duration:

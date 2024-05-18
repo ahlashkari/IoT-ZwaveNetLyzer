@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
 from . import packets
-from . import pipes
-from .pipe_capturer import PipeCapturer, ZwaveFlowCapturer
-from .pipe import Pipe
+from . import flows
+from .flow_capturer import FlowCapturer, ZwaveFlowCapturer
+from .flow import Flow
 from .packet import Packet
-from .pipe_factory import PipeFactory
+from .flow_factory import FlowFactory

@@ -1,14 +1,11 @@
 {
-    "pcap_file_address": "C:/Users/moeinsh/Documents/Z-WaveNetLyzer/AeoTecDoorbell6_Inclusion.csv",
-    "output_file_path": "C:/Users/moeinsh/Documents/Z-WaveNetLyzer/output2.csv",
+    "input_file_address": "C:/Users/moeinsh/Documents/Z-WaveNetLyzer/AeoTecDoorbell6_Inclusion.csv",
+    "output_file_address": "C:/Users/moeinsh/Documents/Z-WaveNetLyzer/output2.csv",
     "label": "Benign",
     "read_packets_count_value_log_info": 10000,
-    "interface_name": "eth0",
-    "max_ethercat_pipe_duration": 1200,
-    "max_zigbee_pipe_duration": 120000,
-    "ethercat_activity_timeout": 300000,
-    "zigbee_activity_timeout": 300,
-    "floating_point_unit": ".8f",
+    "max_zwave_flow_duration": 1200,
+    "zwave_activity_timeout": 300,
+    "floating_point_unit": ".4f",
     "max_rows_number": 800000,
     "features_ignore_list": []
 }

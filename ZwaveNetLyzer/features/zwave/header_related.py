@@ -7,7 +7,7 @@ from math import log2
 from numpy import corrcoef
 from collections import Counter
 from itertools import groupby
-from ...pipe_capturer.pipes import ZwaveFlow
+from ...flow_capturer.flows import ZwaveFlow
 from ..feature import Feature
 from ...protocols import Protocols
 
@@ -1370,6 +1370,8 @@ class FwdChannelStability(Feature):
     name = "fwd_channel_stability"
     def extract(self, zwave_flow: ZwaveFlow) -> int:
         channels = [packet.get_channel() for packet in zwave_flow.get_forward_packets()]
+        if len(channels) == 0:
+            return 0
         longest_streak = max(len(list(g)) for k, g in groupby(channels))
         return longest_streak
 
@@ -1843,6 +1845,8 @@ class BwdChannelStability(Feature):
     name = "bwd_channel_stability"
     def extract(self, zwave_flow: ZwaveFlow) -> int:
         channels = [packet.get_channel() for packet in zwave_flow.get_backward_packets()]
+        if len(channels) == 0:
+            return 0
         longest_streak = max(len(list(g)) for k, g in groupby(channels))
         return longest_streak
 

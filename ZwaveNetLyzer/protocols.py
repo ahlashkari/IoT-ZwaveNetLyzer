@@ -3,9 +3,9 @@
 from enum import Enum
 
 class Protocols(Enum):
+    Zwave = "Zwave"
     EtherCAT = "EtherCAT"
     ZigBee = "ZigBee"
-    Zwave = "Zwave"
     MQTT = "MQTT"
 
     def __str__(self):

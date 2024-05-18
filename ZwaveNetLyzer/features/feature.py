@@ -2,7 +2,7 @@
 
 from abc import ABC, abstractmethod
 from typing import Union
-from ..pipe_capturer import Pipe
+from ..flow_capturer import Flow
 from ..protocols import Protocols
 
 class Feature(ABC):
@@ -12,13 +12,13 @@ class Feature(ABC):
     floating_point_unit: str
 
     @abstractmethod
-    def extract(self, pipe: Pipe) -> Union[float, int, str]:
+    def extract(self, flow: Flow) -> Union[float, int, str]:
         """
-        Abstract method to extract a feature value from a given pipe. Subclasses must override this method
+        Abstract method to extract a feature value from a given flow. Subclasses must override this method
         to provide a custom implementation of feature extraction for each defined feature.
 
         Args:
-            pipe (Pipe): The pipe from which the feature value is extracted.
+            flow (Flow): The flow from which the feature value is extracted.
 
         Returns:
             The extracted feature value, which can be a float, integer, or string.

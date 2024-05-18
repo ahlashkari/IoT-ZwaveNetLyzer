@@ -6,30 +6,30 @@ from .packet import Packet
 from ..protocols import Protocols
 
 
-class Pipe(ABC):
+class Flow(ABC):
     """
-    Abstract base class representing a pipe for network packets.
+    Abstract base class representing a flow for network packets.
 
     Attributes:
-        protocol (Protocols): The protocol used by the pipe.
-        _activity_timeout (int): The time in seconds that a pipe should wait
+        protocol (Protocols): The protocol used by the flow.
+        _activity_timeout (int): The time in seconds that a flow should wait
             for additional packets before being closed.
-        _max_duration (int): The maximum duration in seconds that a pipe is allowed to be open.
-        _start_time (float): The timestamp of the first packet in the pipe.
-        _end_time (float): The timestamp of the last packet in the pipe.
-        _packets (List[Packet]): The list of packets contained in the pipe.
+        _max_duration (int): The maximum duration in seconds that a flow is allowed to be open.
+        _start_time (float): The timestamp of the first packet in the flow.
+        _end_time (float): The timestamp of the last packet in the flow.
+        _packets (List[Packet]): The list of packets contained in the flow.
     """
     protocol: Protocols
 
     def __init__(self, packet: Packet, activity_timeout: int, max_duration: int):
         """
-        Initializes a new instance of the Pipe class.
+        Initializes a new instance of the Flow class.
 
         Args:
-            packet (Packet): The first packet in the pipe.
-            activity_timeout (int): The time in seconds that a pipe should wait
+            packet (Packet): The first packet in the flow.
+            activity_timeout (int): The time in seconds that a flow should wait
                 for additional packets before being closed.
-            max_duration (int): The maximum duration in seconds that a pipe is allowed to be open.
+            max_duration (int): The maximum duration in seconds that a flow is allowed to be open.
         """
         self.protocol = packet.get_protocol()
         self._activity_timeout = activity_timeout
@@ -44,41 +44,41 @@ class Pipe(ABC):
     @abstractmethod
     def __str__(self) -> str:
         """
-        Gets the string representation of the pipe.
+        Gets the string representation of the flow.
 
         Returns:
-            str: The string representation of the pipe.
+            str: The string representation of the flow.
         """
         pass
 
     @abstractmethod
     def is_ended(self, new_packet_timestamp: float) -> bool:
         """
-        Checks whether the pipe has closed or should be closed based on the provided timestamp.
+        Checks whether the flow has closed or should be closed based on the provided timestamp.
 
         Args:
-            new_packet_timestamp (float): The timestamp of the new packet to be added to the pipe.
+            new_packet_timestamp (float): The timestamp of the new packet to be added to the flow.
 
         Returns:
-            bool: True if the pipe is closed or should be closed, False otherwise.
+            bool: True if the flow is closed or should be closed, False otherwise.
         """
         pass
 
     def get_protocol(self) -> Protocols:
         """
-        Gets the protocol used by the pipe.
+        Gets the protocol used by the flow.
 
         Returns:
-            Protocols: The protocol used by the pipe.
+            Protocols: The protocol used by the flow.
         """
         return self.protocol
 
     def get_packets(self) -> List[Packet]:
         """
-        Gets the list of packets contained in the pipe.
+        Gets the list of packets contained in the flow.
 
         Returns:
-            List[Packet]: The list of packets contained in the pipe.
+            List[Packet]: The list of packets contained in the flow.
         """
         return self._packets
     
@@ -102,19 +102,19 @@ class Pipe(ABC):
 
     def get_timestamp(self) -> float:
         """
-        Gets the timestamp of the first packet in the pipe.
+        Gets the timestamp of the first packet in the flow.
 
         Returns:
-            float: The timestamp of the first packet in the pipe.
+            float: The timestamp of the first packet in the flow.
         """
         return self._start_time
 
     def add_packet(self, packet: Packet) -> None:
         """
-        Adds a packet to the pipe.
+        Adds a packet to the flow.
 
         Args:
-            packet (Packet): The packet to be added to the pipe.
+            packet (Packet): The packet to be added to the flow.
         """
         self._packets.append(packet)
         if self._is_forward_packet(packet):
@@ -138,19 +138,19 @@ class Pipe(ABC):
 
     def get_duration(self) -> float:
         """
-        Gets the duration of the pipe in seconds.
+        Gets the duration of the flow in seconds.
 
         Returns:
-            float: The duration of the pipe in seconds.
+            float: The duration of the flow in seconds.
         """
         return (self._end_time - self._start_time).total_seconds()
 
     def activity_timeout(self) -> bool:
         """
-        Checks whether the pipe has exceeded its activity timeout.
+        Checks whether the flow has exceeded its activity timeout.
 
         Returns:
-            bool: True if the pipe has exceeded its activity timeout, False otherwise.
+            bool: True if the flow has exceeded its activity timeout, False otherwise.
         """
 
         if self.get_duration(self) > self._activity_timeout:

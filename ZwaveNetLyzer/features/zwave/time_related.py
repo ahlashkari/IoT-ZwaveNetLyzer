@@ -2,8 +2,8 @@
 
 import statistics
 from scipy import stats
-from ...pipe_capturer import Packet
-from ...pipe_capturer.pipes import ZwaveFlow
+from ...flow_capturer import Packet
+from ...flow_capturer.flows import ZwaveFlow
 from ..feature import Feature
 from ...protocols import Protocols
 from .. import utils
@@ -132,7 +132,6 @@ class FwdSkewnessPacketsTimeDelta(Feature):
     protocol = Protocols.Zwave
     name = "fwd_skewness_packets_time_delta"
     def extract(self, zwave_flow: ZwaveFlow) -> float:
-        packets_time_delta = [packet.get_timestamp() for packet in zwave_flow.get_packets()]
         return format(stats.skew(utils.packets_delta_time_calculation(zwave_flow.get_forward_packets())), self.floating_point_unit)
 
 
@@ -196,7 +195,6 @@ class BwdSkewnessPacketsTimeDelta(Feature):
     protocol = Protocols.Zwave
     name = "bwd_skewness_packets_time_delta"
     def extract(self, zwave_flow: ZwaveFlow) -> float:
-        packets_time_delta = [packet.get_timestamp() for packet in zwave_flow.get_packets()]
         return format(stats.skew(utils.packets_delta_time_calculation(zwave_flow.get_backward_packets())), self.floating_point_unit)
 
 

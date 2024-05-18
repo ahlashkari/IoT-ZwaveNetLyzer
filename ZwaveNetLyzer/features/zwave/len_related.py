@@ -3,7 +3,7 @@
 import statistics
 from scipy import stats
 from statistics import pstdev, variance, mean
-from ...pipe_capturer.pipes import ZwaveFlow
+from ...flow_capturer.flows import ZwaveFlow
 from ..feature import Feature
 from ...protocols import Protocols
 
@@ -333,6 +333,8 @@ class FwdTotalHeaderBytes(Feature):
     name = "fwd_total_header_bytes"
     def extract(self, zwave_flow: ZwaveFlow) -> int:
         header_bytes = [packet.get_header_bytes() for packet in zwave_flow.get_forward_packets()]
+        if len(header_bytes) == 0:
+            return 0
         return sum(header_bytes)
 
 
@@ -341,6 +343,8 @@ class FwdMaxHeaderBytes(Feature):
     name = "fwd_max_header_bytes"
     def extract(self, zwave_flow: ZwaveFlow) -> int:
         header_bytes = [packet.get_header_bytes() for packet in zwave_flow.get_forward_packets()]
+        if len(header_bytes) == 0:
+            return 0
         return max(header_bytes)
 
 
@@ -349,6 +353,8 @@ class FwdMinHeaderBytes(Feature):
     name = "fwd_min_header_bytes"
     def extract(self, zwave_flow: ZwaveFlow) -> int:
         header_bytes = [packet.get_header_bytes() for packet in zwave_flow.get_forward_packets()]
+        if len(header_bytes) == 0:
+            return 0
         return min(header_bytes)
 
 
@@ -357,6 +363,8 @@ class FwdMeanHeaderBytes(Feature):
     name = "fwd_mean_header_bytes"
     def extract(self, zwave_flow: ZwaveFlow) -> float:
         header_bytes = [packet.get_header_bytes() for packet in zwave_flow.get_forward_packets()]
+        if len(header_bytes) == 0:
+            return 0
         return format(statistics.mean(header_bytes), self.floating_point_unit)
 
 
@@ -365,6 +373,8 @@ class FwdModeHeaderBytes(Feature):
     name = "fwd_mode_header_bytes"
     def extract(self, zwave_flow: ZwaveFlow) -> float:
         header_bytes = [packet.get_header_bytes() for packet in zwave_flow.get_forward_packets()]
+        if len(header_bytes) == 0:
+            return 0
         return format(float(stats.mode(header_bytes)[0]), self.floating_point_unit)
 
 
@@ -373,6 +383,8 @@ class FwdVarianceHeaderBytes(Feature):
     name = "fwd_variance_header_bytes"
     def extract(self, zwave_flow: ZwaveFlow) -> float:
         header_bytes = [packet.get_header_bytes() for packet in zwave_flow.get_forward_packets()]
+        if len(header_bytes) == 0:
+            return 0
         return format(statistics.pvariance(header_bytes), self.floating_point_unit)
 
 
@@ -381,6 +393,8 @@ class FwdStandardDeviationHeaderBytes(Feature):
     name = "fwd_standard_deviation_header_bytes"
     def extract(self, zwave_flow: ZwaveFlow) -> float:
         header_bytes = [packet.get_header_bytes() for packet in zwave_flow.get_forward_packets()]
+        if len(header_bytes) == 0:
+            return 0
         return format(statistics.pstdev(header_bytes), self.floating_point_unit)
 
 
@@ -389,6 +403,8 @@ class FwdMedianHeaderBytes(Feature):
     name = "fwd_median_header_bytes"
     def extract(self, zwave_flow: ZwaveFlow) -> float:
         header_bytes = [packet.get_header_bytes() for packet in zwave_flow.get_forward_packets()]
+        if len(header_bytes) == 0:
+            return 0
         return format(statistics.median(header_bytes), self.floating_point_unit)
 
 
@@ -397,6 +413,8 @@ class FwdSkewnessHeaderBytes(Feature):
     name = "fwd_skewness_header_bytes"
     def extract(self, zwave_flow: ZwaveFlow) -> float:
         header_bytes = [packet.get_header_bytes() for packet in zwave_flow.get_forward_packets()]
+        if len(header_bytes) == 0:
+            return 0
         return format(stats.skew(header_bytes), self.floating_point_unit)
 
 
@@ -405,6 +423,8 @@ class FwdCoefficientOfVariationHeaderBytes(Feature):
     name = "fwd_coefficient_of_variation_header_bytes"
     def extract(self, zwave_flow: ZwaveFlow) -> float:
         header_bytes = [packet.get_header_bytes() for packet in zwave_flow.get_forward_packets()]
+        if len(header_bytes) == 0:
+            return 0
         return format(stats.variation(header_bytes), self.floating_point_unit)
 
 
@@ -413,6 +433,8 @@ class FwdMaxPayloadBytes(Feature):
     name = "fwd_max_payload_bytes"
     def extract(self, zwave_flow: ZwaveFlow) -> int:
         payload_bytes = [packet.get_payload_bytes() for packet in zwave_flow.get_forward_packets()]
+        if len(payload_bytes) == 0:
+            return 0
         return max(payload_bytes)
 
 
@@ -421,6 +443,8 @@ class FwdTotalPayloadBytes(Feature):
     name = "fwd_total_payload_bytes"
     def extract(self, zwave_flow: ZwaveFlow) -> int:
         payload_bytes = [packet.get_payload_bytes() for packet in zwave_flow.get_forward_packets()]
+        if len(payload_bytes) == 0:
+            return 0
         return sum(payload_bytes)
 
 
@@ -429,6 +453,8 @@ class FwdMinPayloadBytes(Feature):
     name = "fwd_min_payload_bytes"
     def extract(self, zwave_flow: ZwaveFlow) -> int:
         payload_bytes = [packet.get_payload_bytes() for packet in zwave_flow.get_forward_packets()]
+        if len(payload_bytes) == 0:
+            return 0
         return min(payload_bytes)
 
 
@@ -437,6 +463,8 @@ class FwdMeanPayloadBytes(Feature):
     name = "fwd_mean_payload_bytes"
     def extract(self, zwave_flow: ZwaveFlow) -> float:
         payload_bytes = [packet.get_payload_bytes() for packet in zwave_flow.get_forward_packets()]
+        if len(payload_bytes) == 0:
+            return 0
         return format(statistics.mean(payload_bytes), self.floating_point_unit)
 
 
@@ -445,6 +473,8 @@ class FwdModePayloadBytes(Feature):
     name = "fwd_mode_payload_bytes"
     def extract(self, zwave_flow: ZwaveFlow) -> float:
         payload_bytes = [packet.get_payload_bytes() for packet in zwave_flow.get_forward_packets()]
+        if len(payload_bytes) == 0:
+            return 0
         return format(float(stats.mode(payload_bytes)[0]), self.floating_point_unit)
 
 
@@ -453,6 +483,8 @@ class FwdVariancePayloadBytes(Feature):
     name = "fwd_variance_payload_bytes"
     def extract(self, zwave_flow: ZwaveFlow) -> float:
         payload_bytes = [packet.get_payload_bytes() for packet in zwave_flow.get_forward_packets()]
+        if len(payload_bytes) == 0:
+            return 0
         return format(statistics.pvariance(payload_bytes), self.floating_point_unit)
 
 
@@ -461,6 +493,8 @@ class FwdStandardDeviationPayloadBytes(Feature):
     name = "fwd_standard_deviation_payload_bytes"
     def extract(self, zwave_flow: ZwaveFlow) -> float:
         payload_bytes = [packet.get_payload_bytes() for packet in zwave_flow.get_forward_packets()]
+        if len(payload_bytes) == 0:
+            return 0
         return format(statistics.pstdev(payload_bytes), self.floating_point_unit)
 
 
@@ -469,6 +503,8 @@ class FwdMedianPayloadBytes(Feature):
     name = "fwd_median_payload_bytes"
     def extract(self, zwave_flow: ZwaveFlow) -> float:
         payload_bytes = [packet.get_payload_bytes() for packet in zwave_flow.get_forward_packets()]
+        if len(payload_bytes) == 0:
+            return 0
         return format(statistics.median(payload_bytes), self.floating_point_unit)
 
 
@@ -477,6 +513,8 @@ class FwdSkewnessPayloadBytes(Feature):
     name = "fwd_skewness_payload_bytes"
     def extract(self, zwave_flow: ZwaveFlow) -> float:
         payload_bytes = [packet.get_payload_bytes() for packet in zwave_flow.get_forward_packets()]
+        if len(payload_bytes) == 0:
+            return 0
         return format(stats.skew(payload_bytes), self.floating_point_unit)
 
 
@@ -485,6 +523,8 @@ class FwdCoefficientOfVariationPayloadBytes(Feature):
     name = "fwd_coefficient_of_variation_payload_bytes"
     def extract(self, zwave_flow: ZwaveFlow) -> float:
         payload_bytes = [packet.get_payload_bytes() for packet in zwave_flow.get_forward_packets()]
+        if len(payload_bytes) == 0:
+            return 0
         return format(stats.variation(payload_bytes), self.floating_point_unit)
 
 
@@ -493,6 +533,8 @@ class FwdTotalPacketLen(Feature):
     name = "fwd_total_packets_len"
     def extract(self, zwave_flow: ZwaveFlow) -> int:
         packet_len = [packet.get_packet_len() for packet in zwave_flow.get_forward_packets()]
+        if len(packet_len) == 0:
+            return 0
         return sum(packet_len)
 
 
@@ -501,6 +543,8 @@ class FwdMaxPacketLen(Feature):
     name = "fwd_max_packets_len"
     def extract(self, zwave_flow: ZwaveFlow) -> int:
         packet_len = [packet.get_packet_len() for packet in zwave_flow.get_forward_packets()]
+        if len(packet_len) == 0:
+            return 0
         return max(packet_len)
 
 
@@ -509,6 +553,8 @@ class FwdMinPacketLen(Feature):
     name = "fwd_min_packets_len"
     def extract(self, zwave_flow: ZwaveFlow) -> int:
         packet_len = [packet.get_packet_len() for packet in zwave_flow.get_forward_packets()]
+        if len(packet_len) == 0:
+            return 0
         return min(packet_len)
 
 
@@ -517,6 +563,8 @@ class FwdMeanPacketLen(Feature):
     name = "fwd_mean_packets_len"
     def extract(self, zwave_flow: ZwaveFlow) -> float:
         packet_len = [packet.get_packet_len() for packet in zwave_flow.get_forward_packets()]
+        if len(packet_len) == 0:
+            return 0
         return format(statistics.mean(packet_len), self.floating_point_unit)
 
 
@@ -525,6 +573,8 @@ class FwdModePacketLen(Feature):
     name = "fwd_mode_packets_len"
     def extract(self, zwave_flow: ZwaveFlow) -> float:
         packet_len = [packet.get_packet_len() for packet in zwave_flow.get_forward_packets()]
+        if len(packet_len) == 0:
+            return 0
         return format(float(stats.mode(packet_len)[0]), self.floating_point_unit)
 
 
@@ -533,6 +583,8 @@ class FwdVariancePacketLen(Feature):
     name = "fwd_variance_packets_len"
     def extract(self, zwave_flow: ZwaveFlow) -> float:
         packet_len = [packet.get_packet_len() for packet in zwave_flow.get_forward_packets()]
+        if len(packet_len) == 0:
+            return 0
         return format(statistics.pvariance(packet_len), self.floating_point_unit)
 
 
@@ -541,6 +593,8 @@ class FwdStandardDeviationPacketLen(Feature):
     name = "fwd_standard_deviation_packets_len"
     def extract(self, zwave_flow: ZwaveFlow) -> float:
         packet_len = [packet.get_packet_len() for packet in zwave_flow.get_forward_packets()]
+        if len(packet_len) == 0:
+            return 0
         return format(statistics.pstdev(packet_len), self.floating_point_unit)
 
 
@@ -549,6 +603,8 @@ class FwdMedianPacketLen(Feature):
     name = "fwd_median_packets_len"
     def extract(self, zwave_flow: ZwaveFlow) -> float:
         packet_len = [packet.get_packet_len() for packet in zwave_flow.get_forward_packets()]
+        if len(packet_len) == 0:
+            return 0
         return format(statistics.median(packet_len), self.floating_point_unit)
 
 
@@ -557,6 +613,8 @@ class FwdSkewnessPacketLen(Feature):
     name = "fwd_skewness_packets_len"
     def extract(self, zwave_flow: ZwaveFlow) -> float:
         packet_len = [packet.get_packet_len() for packet in zwave_flow.get_forward_packets()]
+        if len(packet_len) == 0:
+            return 0
         return format(stats.skew(packet_len), self.floating_point_unit)
 
 
@@ -565,6 +623,8 @@ class FwdCoefficientOfVariationPacketLen(Feature):
     name = "fwd_coefficient_of_variation_packets_len"
     def extract(self, zwave_flow: ZwaveFlow) -> float:
         packet_len = [packet.get_packet_len() for packet in zwave_flow.get_forward_packets()]
+        if len(packet_len) == 0:
+            return 0
         return format(stats.variation(packet_len), self.floating_point_unit)
 
 
@@ -573,6 +633,8 @@ class FwdTotalDataFieldSize(Feature):
     name = "fwd_total_data_field_size"
     def extract(self, zwave_flow: ZwaveFlow) -> int:
         data_sizes = [len(packet.get_data()) for packet in zwave_flow.get_forward_packets() if packet.get_data()]
+        if len(data_sizes) == 0:
+            return 0
         return sum(data_sizes)
 
 
@@ -581,6 +643,8 @@ class FwdMaxDataFieldSize(Feature):
     name = "fwd_max_data_field_size"
     def extract(self, zwave_flow: ZwaveFlow) -> int:
         data_sizes = [len(packet.get_data()) for packet in zwave_flow.get_forward_packets() if packet.get_data()]
+        if len(data_sizes) == 0:
+            return 0
         return max(data_sizes)
 
 
@@ -589,6 +653,8 @@ class FwdMinDataFieldSize(Feature):
     name = "fwd_min_data_field_size"
     def extract(self, zwave_flow: ZwaveFlow) -> int:
         data_sizes = [len(packet.get_data()) for packet in zwave_flow.get_forward_packets() if packet.get_data()]
+        if len(data_sizes) == 0:
+            return 0
         return min(data_sizes)
 
 
@@ -597,6 +663,8 @@ class FwdMeanDataFieldSize(Feature):
     name = "fwd_mean_data_field_size"
     def extract(self, zwave_flow: ZwaveFlow) -> int:
         data_sizes = [len(packet.get_data()) for packet in zwave_flow.get_forward_packets() if packet.get_data()]
+        if len(data_sizes) == 0:
+            return 0
         return format(statistics.mean(data_sizes), self.floating_point_unit)
 
 
@@ -605,6 +673,8 @@ class FwdModeDataFieldSize(Feature):
     name = "fwd_mode_data_field_size"
     def extract(self, zwave_flow: ZwaveFlow) -> int:
         data_sizes = [len(packet.get_data()) for packet in zwave_flow.get_forward_packets() if packet.get_data()]
+        if len(data_sizes) == 0:
+            return 0
         return format(float(stats.mode(data_sizes)[0]), self.floating_point_unit)
 
 
@@ -613,6 +683,8 @@ class FwdVarianceDataFieldSize(Feature):
     name = "fwd_variance_data_field_size"
     def extract(self, zwave_flow: ZwaveFlow) -> int:
         data_sizes = [len(packet.get_data()) for packet in zwave_flow.get_forward_packets() if packet.get_data()]
+        if len(data_sizes) == 0:
+            return 0
         return format(statistics.pvariance(data_sizes), self.floating_point_unit)
 
 
@@ -621,6 +693,8 @@ class FwdStdDataFieldSize(Feature):
     name = "fwd_std_data_field_size"
     def extract(self, zwave_flow: ZwaveFlow) -> int:
         data_sizes = [len(packet.get_data()) for packet in zwave_flow.get_forward_packets() if packet.get_data()]
+        if len(data_sizes) == 0:
+            return 0
         return format(statistics.pstdev(data_sizes), self.floating_point_unit)
 
 
@@ -629,6 +703,8 @@ class FwdSkewnessDataFieldSize(Feature):
     name = "fwd_skewness_data_field_size"
     def extract(self, zwave_flow: ZwaveFlow) -> int:
         data_sizes = [len(packet.get_data()) for packet in zwave_flow.get_forward_packets() if packet.get_data()]
+        if len(data_sizes) == 0:
+            return 0
         return format(stats.skew(data_sizes), self.floating_point_unit)
 
 
@@ -637,6 +713,8 @@ class FwdCoefficientOfVariationDataFieldSize(Feature):
     name = "fwd_coefficient_of_variation_data_field_size"
     def extract(self, zwave_flow: ZwaveFlow) -> int:
         data_sizes = [len(packet.get_data()) for packet in zwave_flow.get_forward_packets() if packet.get_data()]
+        if len(data_sizes) == 0:
+            return 0
         return format(stats.variation(data_sizes), self.floating_point_unit)
 
 
@@ -645,6 +723,8 @@ class FwdMedianDataFieldSize(Feature):
     name = "fwd_median_data_field_size"
     def extract(self, zwave_flow: ZwaveFlow) -> int:
         data_sizes = [len(packet.get_data()) for packet in zwave_flow.get_forward_packets() if packet.get_data()]
+        if len(data_sizes) == 0:
+            return 0
         return format(statistics.median(data_sizes), self.floating_point_unit)
 
 
@@ -653,6 +733,8 @@ class BwdTotalHeaderBytes(Feature):
     name = "bwd_total_header_bytes"
     def extract(self, zwave_flow: ZwaveFlow) -> int:
         header_bytes = [packet.get_header_bytes() for packet in zwave_flow.get_backward_packets()]
+        if len(header_bytes) == 0:
+            return 0
         return sum(header_bytes)
 
 
@@ -661,6 +743,8 @@ class BwdMaxHeaderBytes(Feature):
     name = "bwd_max_header_bytes"
     def extract(self, zwave_flow: ZwaveFlow) -> int:
         header_bytes = [packet.get_header_bytes() for packet in zwave_flow.get_backward_packets()]
+        if len(header_bytes) == 0:
+            return 0
         return max(header_bytes)
 
 
@@ -669,6 +753,8 @@ class BwdMinHeaderBytes(Feature):
     name = "bwd_min_header_bytes"
     def extract(self, zwave_flow: ZwaveFlow) -> int:
         header_bytes = [packet.get_header_bytes() for packet in zwave_flow.get_backward_packets()]
+        if len(header_bytes) == 0:
+            return 0
         return min(header_bytes)
 
 
@@ -677,6 +763,8 @@ class BwdMeanHeaderBytes(Feature):
     name = "bwd_mean_header_bytes"
     def extract(self, zwave_flow: ZwaveFlow) -> float:
         header_bytes = [packet.get_header_bytes() for packet in zwave_flow.get_backward_packets()]
+        if len(header_bytes) == 0:
+            return 0
         return format(statistics.mean(header_bytes), self.floating_point_unit)
 
 
@@ -693,6 +781,8 @@ class BwdVarianceHeaderBytes(Feature):
     name = "bwd_variance_header_bytes"
     def extract(self, zwave_flow: ZwaveFlow) -> float:
         header_bytes = [packet.get_header_bytes() for packet in zwave_flow.get_backward_packets()]
+        if len(header_bytes) == 0:
+            return 0
         return format(statistics.pvariance(header_bytes), self.floating_point_unit)
 
 
@@ -701,6 +791,8 @@ class BwdStandardDeviationHeaderBytes(Feature):
     name = "bwd_standard_deviation_header_bytes"
     def extract(self, zwave_flow: ZwaveFlow) -> float:
         header_bytes = [packet.get_header_bytes() for packet in zwave_flow.get_backward_packets()]
+        if len(header_bytes) == 0:
+            return 0
         return format(statistics.pstdev(header_bytes), self.floating_point_unit)
 
 
@@ -709,6 +801,8 @@ class BwdMedianHeaderBytes(Feature):
     name = "bwd_median_header_bytes"
     def extract(self, zwave_flow: ZwaveFlow) -> float:
         header_bytes = [packet.get_header_bytes() for packet in zwave_flow.get_backward_packets()]
+        if len(header_bytes) == 0:
+            return 0
         return format(statistics.median(header_bytes), self.floating_point_unit)
 
 
@@ -717,6 +811,8 @@ class BwdSkewnessHeaderBytes(Feature):
     name = "bwd_skewness_header_bytes"
     def extract(self, zwave_flow: ZwaveFlow) -> float:
         header_bytes = [packet.get_header_bytes() for packet in zwave_flow.get_backward_packets()]
+        if len(header_bytes) == 0:
+            return 0
         return format(stats.skew(header_bytes), self.floating_point_unit)
 
 
@@ -725,6 +821,8 @@ class BwdCoefficientOfVariationHeaderBytes(Feature):
     name = "bwd_coefficient_of_variation_header_bytes"
     def extract(self, zwave_flow: ZwaveFlow) -> float:
         header_bytes = [packet.get_header_bytes() for packet in zwave_flow.get_backward_packets()]
+        if len(header_bytes) == 0:
+            return 0
         return format(stats.variation(header_bytes), self.floating_point_unit)
 
 
@@ -733,6 +831,8 @@ class BwdMaxPayloadBytes(Feature):
     name = "bwd_max_payload_bytes"
     def extract(self, zwave_flow: ZwaveFlow) -> int:
         payload_bytes = [packet.get_payload_bytes() for packet in zwave_flow.get_backward_packets()]
+        if len(payload_bytes) == 0:
+            return 0
         return max(payload_bytes)
 
 
@@ -741,6 +841,8 @@ class BwdTotalPayloadBytes(Feature):
     name = "bwd_total_payload_bytes"
     def extract(self, zwave_flow: ZwaveFlow) -> int:
         payload_bytes = [packet.get_payload_bytes() for packet in zwave_flow.get_backward_packets()]
+        if len(payload_bytes) == 0:
+            return 0
         return sum(payload_bytes)
 
 
@@ -749,6 +851,8 @@ class BwdMinPayloadBytes(Feature):
     name = "bwd_min_payload_bytes"
     def extract(self, zwave_flow: ZwaveFlow) -> int:
         payload_bytes = [packet.get_payload_bytes() for packet in zwave_flow.get_backward_packets()]
+        if len(payload_bytes) == 0:
+            return 0
         return min(payload_bytes)
 
 
@@ -757,6 +861,8 @@ class BwdMeanPayloadBytes(Feature):
     name = "bwd_mean_payload_bytes"
     def extract(self, zwave_flow: ZwaveFlow) -> float:
         payload_bytes = [packet.get_payload_bytes() for packet in zwave_flow.get_backward_packets()]
+        if len(payload_bytes) == 0:
+            return 0
         return format(statistics.mean(payload_bytes), self.floating_point_unit)
 
 
@@ -765,6 +871,8 @@ class BwdModePayloadBytes(Feature):
     name = "bwd_mode_payload_bytes"
     def extract(self, zwave_flow: ZwaveFlow) -> float:
         payload_bytes = [packet.get_payload_bytes() for packet in zwave_flow.get_backward_packets()]
+        if len(payload_bytes) == 0:
+            return 0
         return format(float(stats.mode(payload_bytes)[0]), self.floating_point_unit)
 
 
@@ -773,6 +881,8 @@ class BwdVariancePayloadBytes(Feature):
     name = "bwd_variance_payload_bytes"
     def extract(self, zwave_flow: ZwaveFlow) -> float:
         payload_bytes = [packet.get_payload_bytes() for packet in zwave_flow.get_backward_packets()]
+        if len(payload_bytes) == 0:
+            return 0
         return format(statistics.pvariance(payload_bytes), self.floating_point_unit)
 
 
@@ -781,6 +891,8 @@ class BwdStandardDeviationPayloadBytes(Feature):
     name = "bwd_standard_deviation_payload_bytes"
     def extract(self, zwave_flow: ZwaveFlow) -> float:
         payload_bytes = [packet.get_payload_bytes() for packet in zwave_flow.get_backward_packets()]
+        if len(payload_bytes) == 0:
+            return 0
         return format(statistics.pstdev(payload_bytes), self.floating_point_unit)
 
 
@@ -789,6 +901,8 @@ class BwdMedianPayloadBytes(Feature):
     name = "bwd_median_payload_bytes"
     def extract(self, zwave_flow: ZwaveFlow) -> float:
         payload_bytes = [packet.get_payload_bytes() for packet in zwave_flow.get_backward_packets()]
+        if len(payload_bytes) == 0:
+            return 0
         return format(statistics.median(payload_bytes), self.floating_point_unit)
 
 
@@ -797,6 +911,8 @@ class BwdSkewnessPayloadBytes(Feature):
     name = "bwd_skewness_payload_bytes"
     def extract(self, zwave_flow: ZwaveFlow) -> float:
         payload_bytes = [packet.get_payload_bytes() for packet in zwave_flow.get_backward_packets()]
+        if len(payload_bytes) == 0:
+            return 0
         return format(stats.skew(payload_bytes), self.floating_point_unit)
 
 
@@ -805,6 +921,8 @@ class BwdCoefficientOfVariationPayloadBytes(Feature):
     name = "bwd_coefficient_of_variation_payload_bytes"
     def extract(self, zwave_flow: ZwaveFlow) -> float:
         payload_bytes = [packet.get_payload_bytes() for packet in zwave_flow.get_backward_packets()]
+        if len(payload_bytes) == 0:
+            return 0
         return format(stats.variation(payload_bytes), self.floating_point_unit)
 
 
@@ -813,6 +931,8 @@ class BwdTotalPacketLen(Feature):
     name = "bwd_total_packets_len"
     def extract(self, zwave_flow: ZwaveFlow) -> int:
         packet_len = [packet.get_packet_len() for packet in zwave_flow.get_backward_packets()]
+        if len(packet_len) == 0:
+            return 0
         return sum(packet_len)
 
 
@@ -821,6 +941,8 @@ class BwdMaxPacketLen(Feature):
     name = "bwd_max_packets_len"
     def extract(self, zwave_flow: ZwaveFlow) -> int:
         packet_len = [packet.get_packet_len() for packet in zwave_flow.get_backward_packets()]
+        if len(packet_len) == 0:
+            return 0
         return max(packet_len)
 
 
@@ -829,6 +951,8 @@ class BwdMinPacketLen(Feature):
     name = "bwd_min_packets_len"
     def extract(self, zwave_flow: ZwaveFlow) -> int:
         packet_len = [packet.get_packet_len() for packet in zwave_flow.get_backward_packets()]
+        if len(packet_len) == 0:
+            return 0
         return min(packet_len)
 
 
@@ -837,6 +961,8 @@ class BwdMeanPacketLen(Feature):
     name = "bwd_mean_packets_len"
     def extract(self, zwave_flow: ZwaveFlow) -> float:
         packet_len = [packet.get_packet_len() for packet in zwave_flow.get_backward_packets()]
+        if len(packet_len) == 0:
+            return 0
         return format(statistics.mean(packet_len), self.floating_point_unit)
 
 
@@ -845,6 +971,8 @@ class BwdModePacketLen(Feature):
     name = "bwd_mode_packets_len"
     def extract(self, zwave_flow: ZwaveFlow) -> float:
         packet_len = [packet.get_packet_len() for packet in zwave_flow.get_backward_packets()]
+        if len(packet_len) == 0:
+            return 0
         return format(float(stats.mode(packet_len)[0]), self.floating_point_unit)
 
 
@@ -853,6 +981,8 @@ class BwdVariancePacketLen(Feature):
     name = "bwd_variance_packets_len"
     def extract(self, zwave_flow: ZwaveFlow) -> float:
         packet_len = [packet.get_packet_len() for packet in zwave_flow.get_backward_packets()]
+        if len(packet_len) == 0:
+            return 0
         return format(statistics.pvariance(packet_len), self.floating_point_unit)
 
 
@@ -861,6 +991,8 @@ class BwdStandardDeviationPacketLen(Feature):
     name = "bwd_standard_deviation_packets_len"
     def extract(self, zwave_flow: ZwaveFlow) -> float:
         packet_len = [packet.get_packet_len() for packet in zwave_flow.get_backward_packets()]
+        if len(packet_len) == 0:
+            return 0
         return format(statistics.pstdev(packet_len), self.floating_point_unit)
 
 
@@ -869,6 +1001,8 @@ class BwdMedianPacketLen(Feature):
     name = "bwd_median_packets_len"
     def extract(self, zwave_flow: ZwaveFlow) -> float:
         packet_len = [packet.get_packet_len() for packet in zwave_flow.get_backward_packets()]
+        if len(packet_len) == 0:
+            return 0
         return format(statistics.median(packet_len), self.floating_point_unit)
 
 
@@ -877,6 +1011,8 @@ class BwdSkewnessPacketLen(Feature):
     name = "bwd_skewness_packets_len"
     def extract(self, zwave_flow: ZwaveFlow) -> float:
         packet_len = [packet.get_packet_len() for packet in zwave_flow.get_backward_packets()]
+        if len(packet_len) == 0:
+            return 0
         return format(stats.skew(packet_len), self.floating_point_unit)
 
 
@@ -885,6 +1021,8 @@ class BwdCoefficientOfVariationPacketLen(Feature):
     name = "bwd_coefficient_of_variation_packets_len"
     def extract(self, zwave_flow: ZwaveFlow) -> float:
         packet_len = [packet.get_packet_len() for packet in zwave_flow.get_backward_packets()]
+        if len(packet_len) == 0:
+            return 0
         return format(stats.variation(packet_len), self.floating_point_unit)
 
 
@@ -893,6 +1031,8 @@ class BwdTotalDataFieldSize(Feature):
     name = "bwd_total_data_field_size"
     def extract(self, zwave_flow: ZwaveFlow) -> int:
         data_sizes = [len(packet.get_data()) for packet in zwave_flow.get_backward_packets() if packet.get_data()]
+        if len(data_sizes) == 0:
+            return 0
         return sum(data_sizes)
 
 
@@ -901,6 +1041,8 @@ class BwdMaxDataFieldSize(Feature):
     name = "bwd_max_data_field_size"
     def extract(self, zwave_flow: ZwaveFlow) -> int:
         data_sizes = [len(packet.get_data()) for packet in zwave_flow.get_backward_packets() if packet.get_data()]
+        if len(data_sizes) == 0:
+            return 0
         return max(data_sizes)
 
 
@@ -909,6 +1051,8 @@ class BwdMinDataFieldSize(Feature):
     name = "bwd_min_data_field_size"
     def extract(self, zwave_flow: ZwaveFlow) -> int:
         data_sizes = [len(packet.get_data()) for packet in zwave_flow.get_backward_packets() if packet.get_data()]
+        if len(data_sizes) == 0:
+            return 0
         return min(data_sizes)
 
 
@@ -917,6 +1061,8 @@ class BwdMeanDataFieldSize(Feature):
     name = "bwd_mean_data_field_size"
     def extract(self, zwave_flow: ZwaveFlow) -> int:
         data_sizes = [len(packet.get_data()) for packet in zwave_flow.get_backward_packets() if packet.get_data()]
+        if len(data_sizes) == 0:
+            return 0
         return format(statistics.mean(data_sizes), self.floating_point_unit)
 
 
@@ -925,6 +1071,8 @@ class BwdModeDataFieldSize(Feature):
     name = "bwd_mode_data_field_size"
     def extract(self, zwave_flow: ZwaveFlow) -> int:
         data_sizes = [len(packet.get_data()) for packet in zwave_flow.get_backward_packets() if packet.get_data()]
+        if len(data_sizes) == 0:
+            return 0
         return format(float(stats.mode(data_sizes)[0]), self.floating_point_unit)
 
 
@@ -933,6 +1081,8 @@ class BwdVarianceDataFieldSize(Feature):
     name = "bwd_variance_data_field_size"
     def extract(self, zwave_flow: ZwaveFlow) -> int:
         data_sizes = [len(packet.get_data()) for packet in zwave_flow.get_backward_packets() if packet.get_data()]
+        if len(data_sizes) == 0:
+            return 0
         return format(statistics.pvariance(data_sizes), self.floating_point_unit)
 
 
@@ -941,6 +1091,8 @@ class BwdStdDataFieldSize(Feature):
     name = "bwd_std_data_field_size"
     def extract(self, zwave_flow: ZwaveFlow) -> int:
         data_sizes = [len(packet.get_data()) for packet in zwave_flow.get_backward_packets() if packet.get_data()]
+        if len(data_sizes) == 0:
+            return 0
         return format(statistics.pstdev(data_sizes), self.floating_point_unit)
 
 
@@ -949,6 +1101,8 @@ class BwdSkewnessDataFieldSize(Feature):
     name = "bwd_skewness_data_field_size"
     def extract(self, zwave_flow: ZwaveFlow) -> int:
         data_sizes = [len(packet.get_data()) for packet in zwave_flow.get_backward_packets() if packet.get_data()]
+        if len(data_sizes) == 0:
+            return 0
         return format(stats.skew(data_sizes), self.floating_point_unit)
 
 
@@ -957,6 +1111,8 @@ class BwdCoefficientOfVariationDataFieldSize(Feature):
     name = "bwd_coefficient_of_variation_data_field_size"
     def extract(self, zwave_flow: ZwaveFlow) -> int:
         data_sizes = [len(packet.get_data()) for packet in zwave_flow.get_backward_packets() if packet.get_data()]
+        if len(data_sizes) == 0:
+            return 0
         return format(stats.variation(data_sizes), self.floating_point_unit)
 
 
@@ -965,4 +1121,6 @@ class BwdMedianDataFieldSize(Feature):
     name = "bwd_median_data_field_size"
     def extract(self, zwave_flow: ZwaveFlow) -> int:
         data_sizes = [len(packet.get_data()) for packet in zwave_flow.get_backward_packets() if packet.get_data()]
+        if len(data_sizes) == 0:
+            return 0
         return format(statistics.median(data_sizes), self.floating_point_unit)

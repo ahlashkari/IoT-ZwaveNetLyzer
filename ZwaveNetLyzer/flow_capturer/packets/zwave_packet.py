@@ -47,9 +47,9 @@ class ZwavePacket(Packet):
         self.payload_bytes = self.__calculate_payload_size()
         self.header_bytes = self.__calculate_header_size()
 
-    def get_possible_pipe_ids(self) -> str:
+    def get_possible_flow_ids(self) -> str:
         """
-        Gets the possible ID of the pipe associated with this packet.
+        Gets the possible ID of the flow associated with this packet.
         """
         return [f"{self.__home_id}_{self.__src_id}_{self.__dst_id}", f"{self.__home_id}_{self.__dst_id}_{self.__src_id}"]
 
