@@ -24,7 +24,7 @@ class ZwavePacket(Packet):
         self.__date = packet_info['Date']
         self.__time = packet_info['Time']
         date_time_str = f"{self.__date} {self.__time}"
-        self._timestamp = datetime.strptime(date_time_str, '%Y-%m-%d %I:%M:%S.%f')
+        self._timestamp = datetime.strptime(date_time_str, '%Y-%m-%d %H:%M:%S.%f')
         self.__speed = float(packet_info['Speed'][:-1]) * 1000
         self.__channel = int(packet_info['Channel'])
         self.__rssi = int(packet_info['Rssi'])
