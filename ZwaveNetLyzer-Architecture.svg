@@ -91,10 +91,10 @@
 			<v:textRect cx="288" cy="771.198" width="576.01" height="41.6033"/>
 			<rect x="0" y="750.397" width="576" height="41.6033" class="st1"/>
 			<text x="103.35" y="767" class="st2" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>For adding a new protocol named XXX, you need to define these: <v:newlineChar/><tspan
-						x="25.54" dy="1.2em" class="st3">(1) XXXPacket class, (2) XXXPipe Class (3) Define it in the PipeFactory (4) Defining its features</tspan></text>		</g>
+						x="25.54" dy="1.2em" class="st3">(1) XXXPacket class, (2) XXXFlow Class (3) Define it in the FlowFactory (4) Defining its features</tspan></text>		</g>
 		<g id="shape459-5" v:mID="459" v:groupContext="shape" transform="translate(18,-465.75)">
 			<title>Package (collapsed).459</title>
-			<desc>We can have differnet definition of Pipe for each protocol Yo...</desc>
+			<desc>We can have differnet definition of Flow for each protocol Yo...</desc>
 			<v:userDefs>
 				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
 			</v:userDefs>
@@ -102,7 +102,7 @@
 			<v:textRect cx="67.5" cy="735.75" width="135" height="112.5"/>
 			<rect x="0" y="679.5" width="135" height="112.5" class="st1"/>
 			<text x="4.39" y="706.35" class="st2" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>We can have differnet <tspan
-						x="8.77" dy="1.2em" class="st3">definition of Pipe for </tspan><tspan x="28.34" dy="1.2em" class="st3">each protocol <v:lf/></tspan><tspan
+						x="8.77" dy="1.2em" class="st3">definition of Flow for </tspan><tspan x="28.34" dy="1.2em" class="st3">each protocol <v:lf/></tspan><tspan
 						x="21.18" dy="1.2em" class="st3">You just need to </tspan><tspan x="23.37" dy="1.2em" class="st3">define the class</tspan></text>		</g>
 		<g id="shape465-12" v:mID="465" v:groupContext="shape" transform="translate(18,-288)">
 			<title>Package (collapsed).465</title>
@@ -114,13 +114,13 @@
 			<v:textRect cx="108" cy="726.75" width="216.01" height="130.5"/>
 			<rect x="0" y="661.5" width="216" height="130.5" class="st1"/>
 			<text x="21.64" y="688.95" class="st2" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>What if for some protocols we <tspan
-						x="20.35" dy="1.2em" class="st3">didn&#39;t have the python parser?<v:lf/></tspan><tspan x="24.93"
-						dy="1.2em" class="st3">(1) define the parser in Scapy<v:newlineChar/></tspan><tspan x="4.24" dy="1.2em"
-						class="st3">(2) use another language (c/c++/etc) </tspan><tspan x="6.11" dy="1.2em" class="st3">to creates pipes, save them in a file, </tspan><tspan
+						x="20.35" dy="1.2em" class="st3">didn&#39;t have the python parser?<v:lf/></tspan><tspan x="10.93"
+						dy="1.2em" class="st3">(1) define the corresponding parser<v:newlineChar/></tspan><tspan x="4" dy="1.2em"
+						class="st3">(2) use another language (c/c++/etc) </tspan><tspan x="6.11" dy="1.2em" class="st3">to creates flows, save them in a file, </tspan><tspan
 						x="43.32" dy="1.2em" class="st3">read them in IoTMeter</tspan></text>		</g>
 		<g id="shape466-20" v:mID="466" v:groupContext="shape" transform="translate(18,-102.964)">
 			<title>Package (collapsed).466</title>
-			<desc>Even if you didn&#39;t want to use pipe, you can handle it packet...</desc>
+			<desc>Even if you didn&#39;t want to use flow, you can handle it packet...</desc>
 			<v:userDefs>
 				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
 			</v:userDefs>
@@ -128,8 +128,8 @@
 			<v:textRect cx="75.375" cy="735.75" width="150.75" height="112.5"/>
 			<rect x="0" y="679.5" width="150.75" height="112.5" class="st1"/>
 			<text x="10.12" y="706.35" class="st2" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Even if you didn&#39;t want <tspan
-						x="18.39" dy="1.2em" class="st3">to use pipe, you can </tspan><tspan x="18.62" dy="1.2em" class="st3">handle it packets by </tspan><tspan
-						x="18.73" dy="1.2em" class="st3">packets (having one </tspan><tspan x="18.3" dy="1.2em" class="st3">packet in each pipe)</tspan></text>		</g>
+						x="18.39" dy="1.2em" class="st3">to use flow, you can </tspan><tspan x="18.62" dy="1.2em" class="st3">handle it packets by </tspan><tspan
+						x="18.73" dy="1.2em" class="st3">packets (having one </tspan><tspan x="18.3" dy="1.2em" class="st3">packet in each flow)</tspan></text>		</g>
 		<g id="group4-27" transform="translate(494.437,-542.839)" v:mID="4" v:groupContext="group">
 			<v:userDefs>
 				<v:ud v:nameU="msvStructureType" v:prompt="" v:val="VT4(List)"/>
@@ -398,11 +398,11 @@
 				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
 				<v:ud v:nameU="AdjustWidthIfNoMemberPresent" v:prompt="" v:val="VT0(0):26"/>
 				<v:ud v:nameU="WidthMin" v:prompt="" v:val="VT0(1.4491161631094):1"/>
-				<v:ud v:nameU="EntityName" v:prompt="" v:val="VT4(Pipe)"/>
+				<v:ud v:nameU="EntityName" v:prompt="" v:val="VT4(Flow)"/>
 				<v:ud v:nameU="BackGrndLine" v:prompt="" v:val="VT5(#ffffff)"/>
 			</v:userDefs>
 			<title>Class.81</title>
-			<desc>Pipe</desc>
+			<desc>Flow</desc>
 			<g id="shape82-54" v:mID="82" v:groupContext="shape">
 				<title>Sheet.82</title>
 				<v:userDefs>
@@ -426,7 +426,7 @@
 					<v:ud v:nameU="Spacer" v:prompt="" v:val="VT0(0):26"/>
 					<v:ud v:nameU="UsableHgt" v:prompt="" v:val="VT0(0.4375):0"/>
 					<v:ud v:nameU="UmlRole" v:prompt="" v:val="VT4(ClassName)"/>
-					<v:ud v:nameU="UmlRole" v:prompt="" v:val="VT4(Pipe)"/>
+					<v:ud v:nameU="UmlRole" v:prompt="" v:val="VT4(Flow)"/>
 				</v:userDefs>
 				<path d="M0 792 L119.25 792 L119.25 760.5 L0 760.5 L0 792 Z" class="st5"/>
 			</g>
@@ -445,7 +445,7 @@
 			<g id="shape81-59" v:mID="81" v:groupContext="groupContent">
 				<v:textBlock v:margins="rect(8.5,4,8.5,4)"/>
 				<v:textRect cx="59.625" cy="745.496" width="119.25" height="31.4037"/>
-				<text x="4" y="749.1" class="st7" v:langID="1033"><v:paragraph/><v:tabList/>Pipe</text>			</g>
+				<text x="4" y="749.1" class="st7" v:langID="1033"><v:paragraph/><v:tabList/>Flow</text>			</g>
 		</g>
 		<g id="group114-61" transform="translate(362.775,-415.125)" v:mID="114" v:groupContext="group" v:layerMember="1">
 			<v:userDefs>
@@ -1457,11 +1457,11 @@
 				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
 				<v:ud v:nameU="AdjustWidthIfNoMemberPresent" v:prompt="" v:val="VT0(0):26"/>
 				<v:ud v:nameU="WidthMin" v:prompt="" v:val="VT0(1.0618061350332):1"/>
-				<v:ud v:nameU="EntityName" v:prompt="" v:val="VT4(PipeFactory)"/>
+				<v:ud v:nameU="EntityName" v:prompt="" v:val="VT4(FlowFactory)"/>
 				<v:ud v:nameU="BackGrndLine" v:prompt="" v:val="VT5(#ffffff)"/>
 			</v:userDefs>
 			<title>Class.362</title>
-			<desc>PipeFactory</desc>
+			<desc>FlowFactory</desc>
 			<g id="shape363-226" v:mID="363" v:groupContext="shape">
 				<title>Sheet.363</title>
 				<v:userDefs>
@@ -1485,7 +1485,7 @@
 					<v:ud v:nameU="Spacer" v:prompt="" v:val="VT0(0):26"/>
 					<v:ud v:nameU="UsableHgt" v:prompt="" v:val="VT0(0.4375):0"/>
 					<v:ud v:nameU="UmlRole" v:prompt="" v:val="VT4(ClassName)"/>
-					<v:ud v:nameU="UmlRole" v:prompt="" v:val="VT4(PipeFactory)"/>
+					<v:ud v:nameU="UmlRole" v:prompt="" v:val="VT4(FlowFactory)"/>
 				</v:userDefs>
 				<path d="M0 792 L119.25 792 L119.25 760.5 L0 760.5 L0 792 Z" class="st5"/>
 			</g>
@@ -1504,7 +1504,7 @@
 			<g id="shape362-231" v:mID="362" v:groupContext="groupContent">
 				<v:textBlock v:margins="rect(8.5,4,8.5,4)"/>
 				<v:textRect cx="59.625" cy="751.5" width="119.25" height="31.4037"/>
-				<text x="4" y="755.1" class="st7" v:langID="1033"><v:paragraph/><v:tabList/>PipeFactory</text>			</g>
+				<text x="4" y="755.1" class="st7" v:langID="1033"><v:paragraph/><v:tabList/>FlowFactory</text>			</g>
 		</g>
 		<g id="group370-233" transform="translate(575.437,-340.504)" v:mID="370" v:groupContext="group" v:layerMember="1">
 			<v:userDefs>
@@ -1557,11 +1557,11 @@
 				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
 				<v:ud v:nameU="AdjustWidthIfNoMemberPresent" v:prompt="" v:val="VT0(0):26"/>
 				<v:ud v:nameU="WidthMin" v:prompt="" v:val="VT0(1.4915661142812):1"/>
-				<v:ud v:nameU="EntityName" v:prompt="" v:val="VT4(EtherCatPipe)"/>
+				<v:ud v:nameU="EntityName" v:prompt="" v:val="VT4(EtherCatFlow)"/>
 				<v:ud v:nameU="BackGrndLine" v:prompt="" v:val="VT5(#ffffff)"/>
 			</v:userDefs>
 			<title>Class.375</title>
-			<desc>EtherCatPipe</desc>
+			<desc>EtherCatFlow</desc>
 			<g id="shape376-238" v:mID="376" v:groupContext="shape">
 				<title>Sheet.376</title>
 				<v:userDefs>
@@ -1585,7 +1585,7 @@
 					<v:ud v:nameU="Spacer" v:prompt="" v:val="VT0(0):26"/>
 					<v:ud v:nameU="UsableHgt" v:prompt="" v:val="VT0(0.4375):0"/>
 					<v:ud v:nameU="UmlRole" v:prompt="" v:val="VT4(ClassName)"/>
-					<v:ud v:nameU="UmlRole" v:prompt="" v:val="VT4(EtherCatPipe)"/>
+					<v:ud v:nameU="UmlRole" v:prompt="" v:val="VT4(EtherCatFlow)"/>
 				</v:userDefs>
 				<path d="M0 792 L119.25 792 L119.25 760.5 L0 760.5 L0 792 Z" class="st5"/>
 			</g>
@@ -1604,7 +1604,7 @@
 			<g id="shape375-243" v:mID="375" v:groupContext="groupContent">
 				<v:textBlock v:margins="rect(8.5,4,8.5,4)"/>
 				<v:textRect cx="59.625" cy="751.5" width="119.25" height="31.4037"/>
-				<text x="4" y="755.1" class="st7" v:langID="1033"><v:paragraph/><v:tabList/>EtherCatPipe</text>			</g>
+				<text x="4" y="755.1" class="st7" v:langID="1033"><v:paragraph/><v:tabList/>EtherCatFlow</text>			</g>
 		</g>
 		<g id="group384-245" transform="translate(441,-109.877)" v:mID="384" v:groupContext="group">
 			<v:userDefs>
@@ -1633,11 +1633,11 @@
 				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
 				<v:ud v:nameU="AdjustWidthIfNoMemberPresent" v:prompt="" v:val="VT0(0):26"/>
 				<v:ud v:nameU="WidthMin" v:prompt="" v:val="VT0(1.4915661142812):1"/>
-				<v:ud v:nameU="EntityName" v:prompt="" v:val="VT4(ZigBeePipe)"/>
+				<v:ud v:nameU="EntityName" v:prompt="" v:val="VT4(ZigBeeFlow)"/>
 				<v:ud v:nameU="BackGrndLine" v:prompt="" v:val="VT5(#ffffff)"/>
 			</v:userDefs>
 			<title>Class.384</title>
-			<desc>ZigBeePipe</desc>
+			<desc>ZigBeeFlow</desc>
 			<g id="shape385-246" v:mID="385" v:groupContext="shape">
 				<title>Sheet.385</title>
 				<v:userDefs>
@@ -1661,7 +1661,7 @@
 					<v:ud v:nameU="Spacer" v:prompt="" v:val="VT0(0):26"/>
 					<v:ud v:nameU="UsableHgt" v:prompt="" v:val="VT0(0.4375):0"/>
 					<v:ud v:nameU="UmlRole" v:prompt="" v:val="VT4(ClassName)"/>
-					<v:ud v:nameU="UmlRole" v:prompt="" v:val="VT4(ZigBeePipe)"/>
+					<v:ud v:nameU="UmlRole" v:prompt="" v:val="VT4(ZigBeeFlow)"/>
 				</v:userDefs>
 				<path d="M0 792 L119.25 792 L119.25 760.5 L0 760.5 L0 792 Z" class="st5"/>
 			</g>
@@ -1680,7 +1680,7 @@
 			<g id="shape384-251" v:mID="384" v:groupContext="groupContent">
 				<v:textBlock v:margins="rect(8.5,4,8.5,4)"/>
 				<v:textRect cx="59.625" cy="751.5" width="119.25" height="31.4037"/>
-				<text x="4" y="755.1" class="st7" v:langID="1033"><v:paragraph/><v:tabList/>ZigBeePipe</text>			</g>
+				<text x="4" y="755.1" class="st7" v:langID="1033"><v:paragraph/><v:tabList/>ZigBeeFlow</text>			</g>
 		</g>
 		<g id="group400-253" transform="translate(560.25,-210.002)" v:mID="400" v:groupContext="group" v:layerMember="1">
 			<v:userDefs>
@@ -2150,7 +2150,7 @@
 		</g>
 		<g id="shape11-336" v:mID="11" v:groupContext="shape" transform="translate(496.687,-545.089)">
 			<title>Member.11</title>
-			<desc>- Pipes - Data</desc>
+			<desc>- Flows - Data</desc>
 			<v:userDefs>
 				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Member)"/>
 				<v:ud v:nameU="MemberName" v:prompt="" v:val="VT4(-memberName)"/>
@@ -2163,7 +2163,7 @@
 				<v:ud v:nameU="BackLineColor" v:prompt="" v:val="VT5(0)"/>
 				<v:ud v:nameU="IsInstance" v:prompt="" v:val="VT0(0):5"/>
 				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
-				<v:ud v:nameU="MemberName" v:prompt="" v:val="VT4(- Pipes&#10;- Data)"/>
+				<v:ud v:nameU="MemberName" v:prompt="" v:val="VT4(- Flows&#10;- Data)"/>
 				<v:ud v:nameU="ContainerMargin" v:prompt="" v:val="VT0(0.03125):0"/>
 				<v:ud v:nameU="WidthMin" v:prompt="" v:val="VT0(0):26"/>
 				<v:ud v:nameU="DarkerColor" v:prompt="" v:val="VT5(#5b9bd5)"/>
@@ -2176,11 +2176,11 @@
 			<v:textRect cx="87.75" cy="779.998" width="175.5" height="24.0037"/>
 			<rect x="0" y="767.996" width="175.5" height="24.0037" class="st17"/>
 			<rect x="0" y="767.996" width="175.5" height="24.0037" class="st18"/>
-			<text x="9" y="777" class="st19" v:langID="1033"><v:paragraph/><v:tabList/>- Pipes<v:newlineChar/><tspan x="9"
+			<text x="9" y="777" class="st19" v:langID="1033"><v:paragraph/><v:tabList/>- Flows<v:newlineChar/><tspan x="9"
 						dy="1.2em" class="st3">-</tspan> Data</text>		</g>
 		<g id="shape17-341" v:mID="17" v:groupContext="shape" transform="translate(280.687,-437.625)">
 			<title>Member.17</title>
-			<desc>+Execute(Pipes)</desc>
+			<desc>+Execute(Flows)</desc>
 			<v:userDefs>
 				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Member)"/>
 				<v:ud v:nameU="MemberName" v:prompt="" v:val="VT4(-memberName)"/>
@@ -2193,7 +2193,7 @@
 				<v:ud v:nameU="BackLineColor" v:prompt="" v:val="VT5(0)"/>
 				<v:ud v:nameU="IsInstance" v:prompt="" v:val="VT0(0):5"/>
 				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
-				<v:ud v:nameU="MemberName" v:prompt="" v:val="VT4(+Execute(Pipes))"/>
+				<v:ud v:nameU="MemberName" v:prompt="" v:val="VT4(+Execute(Flows))"/>
 				<v:ud v:nameU="ContainerMargin" v:prompt="" v:val="VT0(0.03125):0"/>
 				<v:ud v:nameU="WidthMin" v:prompt="" v:val="VT0(0):26"/>
 				<v:ud v:nameU="DarkerColor" v:prompt="" v:val="VT5(#5b9bd5)"/>
@@ -2206,7 +2206,7 @@
 			<v:textRect cx="73.125" cy="783" width="146.25" height="12.0036"/>
 			<rect x="0" y="774" width="146.25" height="18" class="st17"/>
 			<rect x="0" y="774" width="146.25" height="18" class="st18"/>
-			<text x="9" y="786" class="st19" v:langID="1033"><v:paragraph/><v:tabList/>+Execute(Pipes)</text>		</g>
+			<text x="9" y="786" class="st19" v:langID="1033"><v:paragraph/><v:tabList/>+Execute(Flows)</text>		</g>
 		<g id="shape18-345" v:mID="18" v:groupContext="shape" transform="translate(280.687,-435.375)">
 			<title>Separator.18</title>
 			<v:userDefs>
@@ -2349,7 +2349,7 @@
 		</g>
 		<g id="shape165-370" v:mID="165" v:groupContext="shape" transform="translate(517.087,-430.496)">
 			<title>Member.165</title>
-			<desc>- FinishedPipes - OngoingPipes</desc>
+			<desc>- FinishedFlows - OngoingFlows</desc>
 			<v:userDefs>
 				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Member)"/>
 				<v:ud v:nameU="MemberName" v:prompt="" v:val="VT4(-memberName)"/>
@@ -2362,7 +2362,7 @@
 				<v:ud v:nameU="BackLineColor" v:prompt="" v:val="VT5(0)"/>
 				<v:ud v:nameU="IsInstance" v:prompt="" v:val="VT0(0):5"/>
 				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
-				<v:ud v:nameU="MemberName" v:prompt="" v:val="VT4(- FinishedPipes&#10;- OngoingPipes)"/>
+				<v:ud v:nameU="MemberName" v:prompt="" v:val="VT4(- FinishedFlows&#10;- OngoingFlows)"/>
 				<v:ud v:nameU="ContainerMargin" v:prompt="" v:val="VT0(0.03125):0"/>
 				<v:ud v:nameU="WidthMin" v:prompt="" v:val="VT0(0):26"/>
 				<v:ud v:nameU="DarkerColor" v:prompt="" v:val="VT5(#5b9bd5)"/>
@@ -2375,8 +2375,8 @@
 			<v:textRect cx="67.5" cy="779.998" width="135" height="24.0037"/>
 			<rect x="0" y="767.996" width="135" height="24.0037" class="st17"/>
 			<rect x="0" y="767.996" width="135" height="24.0037" class="st18"/>
-			<text x="9" y="777" class="st19" v:langID="1033"><v:paragraph/><v:tabList/>- FinishedPipes<v:newlineChar/><tspan x="9"
-						dy="1.2em" class="st3">-</tspan> OngoingPipes</text>		</g>
+			<text x="9" y="777" class="st19" v:langID="1033"><v:paragraph/><v:tabList/>- FinishedFlows<v:newlineChar/><tspan x="9"
+						dy="1.2em" class="st3">-</tspan> OngoingFlows</text>		</g>
 		<g id="group183-375" transform="translate(771.187,-627.75)" v:mID="183" v:groupContext="group">
 			<v:userDefs>
 				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
@@ -2394,16 +2394,16 @@
 				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(0,0)):40"/>
 			</v:userDefs>
 			<title>Note</title>
-			<desc>Using Scapy library to capturing the pipes, the Capture funct...</desc>
+			<desc>Using a Parser library to read packets and capture the flows, the Capture funct...</desc>
 			<g id="shape183-376" v:mID="183" v:groupContext="groupContent">
 				<v:textBlock v:margins="rect(4,4,4,4)"/>
 				<v:textRect cx="87.75" cy="758.25" width="175.5" height="65.604"/>
 				<path d="M0 792 L175.5 792 L175.5 733.5 L166.5 724.5 L0 724.5 L0 792 Z" class="st22"/>
 				<path d="M0 792 L-129.6 911.25" class="st23"/>
 				<path d="M0 792 L175.5 792 L175.5 733.5 L166.5 724.5 L0 724.5 L0 792" class="st23"/>
-				<text x="4" y="740.25" class="st7" v:langID="1033"><v:paragraph/><v:tabList/>Using Scapy library to capturing <tspan
-							x="4" dy="1.2em" class="st3">the pipes, the Capture function </tspan><tspan x="4" dy="1.2em"
-							class="st3">will return all captured pipes </tspan><tspan x="4" dy="1.2em" class="st3">(FinishedPipes)</tspan></text>			</g>
+				<text x="4" y="740.25" class="st7" v:langID="1033"><v:paragraph/><v:tabList/>Using a Parser library to read<tspan
+							x="4" dy="1.2em" class="st3">read packets and create the flows, </tspan><tspan x="4" dy="1.2em"
+							class="st3">the Capture function will return</tspan><tspan x="4" dy="1.2em" class="st3">all captured flows (FinishedFlows)</tspan></text>			</g>
 			<g id="shape184-384" v:mID="184" v:groupContext="shape" transform="translate(166.5,-58.5)">
 				<title>Sheet.184</title>
 				<v:userDefs>
@@ -2469,7 +2469,7 @@
 		</g>
 		<g id="shape288-396" v:mID="288" v:groupContext="shape" transform="translate(283.987,-262.557)">
 			<title>Member.288</title>
-			<desc>+ Extract(Pipe) Abstract</desc>
+			<desc>+ Extract(Flow) Abstract</desc>
 			<v:userDefs>
 				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Member)"/>
 				<v:ud v:nameU="MemberName" v:prompt="" v:val="VT4(-memberName)"/>
@@ -2482,7 +2482,7 @@
 				<v:ud v:nameU="BackLineColor" v:prompt="" v:val="VT5(0)"/>
 				<v:ud v:nameU="IsInstance" v:prompt="" v:val="VT0(0):5"/>
 				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
-				<v:ud v:nameU="MemberName" v:prompt="" v:val="VT4(+ Extract(Pipe) Abstract)"/>
+				<v:ud v:nameU="MemberName" v:prompt="" v:val="VT4(+ Extract(Flow) Abstract)"/>
 				<v:ud v:nameU="ContainerMargin" v:prompt="" v:val="VT0(0.03125):0"/>
 				<v:ud v:nameU="WidthMin" v:prompt="" v:val="VT0(0):26"/>
 				<v:ud v:nameU="DarkerColor" v:prompt="" v:val="VT5(#5b9bd5)"/>
@@ -2495,7 +2495,7 @@
 			<v:textRect cx="69.75" cy="783" width="139.5" height="12.0036"/>
 			<rect x="0" y="774" width="139.5" height="18" class="st17"/>
 			<rect x="0" y="774" width="139.5" height="18" class="st18"/>
-			<text x="9" y="786" class="st19" v:langID="1033"><v:paragraph/><v:tabList/>+ Extract(Pipe) Abstract</text>		</g>
+			<text x="9" y="786" class="st19" v:langID="1033"><v:paragraph/><v:tabList/>+ Extract(Flow) Abstract</text>		</g>
 		<g id="shape289-400" v:mID="289" v:groupContext="shape" transform="translate(283.987,-260.307)">
 			<title>Separator.289</title>
 			<v:userDefs>
@@ -2565,15 +2565,15 @@
 				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(2.71875,0)):40"/>
 			</v:userDefs>
 			<title>Note.326</title>
-			<desc>1- Captures pipes using PipeCapturer 2- Passes Pipes to Featu...</desc>
+			<desc>1- Captures flows using FlowCapturer 2- Passes Flows to Featu...</desc>
 			<g id="shape326-413" v:mID="326" v:groupContext="groupContent">
 				<v:textBlock v:margins="rect(4,4,4,4)"/>
 				<v:textRect cx="97.875" cy="751.5" width="195.75" height="80.0041"/>
 				<path d="M0 792 L195.75 792 L195.75 720 L186.75 711 L0 711 L0 792 Z" class="st22"/>
 				<path d="M195.75 792 L250.91 832.5" class="st23"/>
 				<path d="M0 792 L195.75 792 L195.75 720 L186.75 711 L0 711 L0 792" class="st23"/>
-				<text x="4" y="726.3" class="st7" v:langID="1033"><v:paragraph/><v:tabList/>1- Captures pipes using PipeCapturer<v:newlineChar/><tspan
-							x="4" dy="1.2em" class="st3">2</tspan>- Passes Pipes to FeatureExtractor<v:newlineChar/><tspan x="4"
+				<text x="4" y="726.3" class="st7" v:langID="1033"><v:paragraph/><v:tabList/>1- Captures flows using FlowCapturer<v:newlineChar/><tspan
+							x="4" dy="1.2em" class="st3">2</tspan>- Passes Flows to FeatureExtractor<v:newlineChar/><tspan x="4"
 							dy="1.2em" class="st3">3</tspan>- Gets Data (extracted features) from <tspan x="4" dy="1.2em"
 							class="st3">FeatureExtractor<v:newlineChar/></tspan><tspan x="4" dy="1.2em" class="st3">4</tspan>- Passes Data to the Writer</text>			</g>
 			<g id="shape327-422" v:mID="327" v:groupContext="shape" transform="translate(186.75,-72)">
@@ -2600,7 +2600,7 @@
 				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(1.265625,0)):40"/>
 			</v:userDefs>
 			<title>Note.330</title>
-			<desc>It will extract all specified Features from given Pipes and r...</desc>
+			<desc>It will extract all specified Features from given Flows and r...</desc>
 			<g id="shape330-425" v:mID="330" v:groupContext="groupContent">
 				<v:textBlock v:margins="rect(4,4,4,4)"/>
 				<v:textRect cx="67.5" cy="751.5" width="135" height="80.0041"/>
@@ -2608,8 +2608,8 @@
 				<path d="M91.12 792 L124.59 849.37" class="st23"/>
 				<path d="M0 792 L135 792 L135 720 L126 711 L0 711 L0 792" class="st23"/>
 				<text x="4" y="726.3" class="st7" v:langID="1033"><v:paragraph/><v:tabList/>It will extract all specified <tspan
-							x="4" dy="1.2em" class="st3">Features from given Pipes </tspan><tspan x="4" dy="1.2em" class="st3">and return Data (calling </tspan><tspan
-							x="4" dy="1.2em" class="st3">Extract function for all </tspan><tspan x="4" dy="1.2em" class="st3">Features on all Pipes)</tspan></text>			</g>
+							x="4" dy="1.2em" class="st3">Features from given Flows </tspan><tspan x="4" dy="1.2em" class="st3">and return Data (calling </tspan><tspan
+							x="4" dy="1.2em" class="st3">Extract function for all </tspan><tspan x="4" dy="1.2em" class="st3">Features on all Flows)</tspan></text>			</g>
 			<g id="shape331-434" v:mID="331" v:groupContext="shape" transform="translate(126,-72)">
 				<title>Sheet.331</title>
 				<v:userDefs>
@@ -2712,16 +2712,16 @@
 				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(0,0.64870693214114)):40"/>
 			</v:userDefs>
 			<title>Note.360</title>
-			<desc>It is a wrapper on Scapy&#39;s Packet. We use a wrapper because w...</desc>
+			<desc>It is a wrapper on the Praser&#39;s Packet. We use a wrapper because w...</desc>
 			<g id="shape360-454" v:mID="360" v:groupContext="groupContent">
 				<v:textBlock v:margins="rect(4,4,4,4)"/>
 				<v:textRect cx="87.75" cy="715.5" width="175.5" height="152.005"/>
 				<path d="M0 792 L175.5 792 L175.5 648 L166.5 639 L0 639 L0 792 Z" class="st22"/>
 				<path d="M0 745.29 L-64.69 767.26" class="st23"/>
 				<path d="M0 792 L175.5 792 L175.5 648 L166.5 639 L0 639 L0 792" class="st23"/>
-				<text x="4" y="654.3" class="st7" v:langID="1033"><v:paragraph/><v:tabList/>It is a wrapper on Scapy&#39;s Packet. <tspan
-							x="4" dy="1.2em" class="st3">We use a wrapper because we </tspan><tspan x="4" dy="1.2em" class="st3">don&#39;t want to save Scapy&#39; Packets </tspan><tspan
-							x="4" dy="1.2em" class="st3">(since the Scapy&#39;s Packet has a lot </tspan><tspan x="4" dy="1.2em"
+				<text x="4" y="654.3" class="st7" v:langID="1033"><v:paragraph/><v:tabList/>It is a wrapper on the Parser&#39;s Packet. <tspan
+							x="4" dy="1.2em" class="st3">We use a wrapper because we </tspan><tspan x="4" dy="1.2em" class="st3">don&#39;t want to save the Parser&#39; Packets </tspan><tspan
+							x="4" dy="1.2em" class="st3">(since the Parser&#39;s Packet has a lot </tspan><tspan x="4" dy="1.2em"
 							class="st3">of information (which we do not </tspan><tspan x="4" dy="1.2em" class="st3">use most of them), and </tspan>saving <tspan
 							x="4" dy="1.2em" class="st3">them required lots of memory, so </tspan><tspan x="4" dy="1.2em"
 							class="st3">to decrease the memory usage, </tspan><tspan x="4" dy="1.2em" class="st3">we save only needed information </tspan><tspan
