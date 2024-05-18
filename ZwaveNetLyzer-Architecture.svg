@@ -1557,11 +1557,11 @@
 				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
 				<v:ud v:nameU="AdjustWidthIfNoMemberPresent" v:prompt="" v:val="VT0(0):26"/>
 				<v:ud v:nameU="WidthMin" v:prompt="" v:val="VT0(1.4915661142812):1"/>
-				<v:ud v:nameU="EntityName" v:prompt="" v:val="VT4(EtherCatFlow)"/>
+				<v:ud v:nameU="EntityName" v:prompt="" v:val="VT4(ZwaveFlow)"/>
 				<v:ud v:nameU="BackGrndLine" v:prompt="" v:val="VT5(#ffffff)"/>
 			</v:userDefs>
 			<title>Class.375</title>
-			<desc>EtherCatFlow</desc>
+			<desc>ZwaveFlow</desc>
 			<g id="shape376-238" v:mID="376" v:groupContext="shape">
 				<title>Sheet.376</title>
 				<v:userDefs>
@@ -1585,7 +1585,7 @@
 					<v:ud v:nameU="Spacer" v:prompt="" v:val="VT0(0):26"/>
 					<v:ud v:nameU="UsableHgt" v:prompt="" v:val="VT0(0.4375):0"/>
 					<v:ud v:nameU="UmlRole" v:prompt="" v:val="VT4(ClassName)"/>
-					<v:ud v:nameU="UmlRole" v:prompt="" v:val="VT4(EtherCatFlow)"/>
+					<v:ud v:nameU="UmlRole" v:prompt="" v:val="VT4(ZwaveFlow)"/>
 				</v:userDefs>
 				<path d="M0 792 L119.25 792 L119.25 760.5 L0 760.5 L0 792 Z" class="st5"/>
 			</g>
@@ -1604,7 +1604,7 @@
 			<g id="shape375-243" v:mID="375" v:groupContext="groupContent">
 				<v:textBlock v:margins="rect(8.5,4,8.5,4)"/>
 				<v:textRect cx="59.625" cy="751.5" width="119.25" height="31.4037"/>
-				<text x="4" y="755.1" class="st7" v:langID="1033"><v:paragraph/><v:tabList/>EtherCatFlow</text>			</g>
+				<text x="4" y="755.1" class="st7" v:langID="1033"><v:paragraph/><v:tabList/>ZwaveFlow</text>			</g>
 		</g>
 		<g id="group384-245" transform="translate(441,-109.877)" v:mID="384" v:groupContext="group">
 			<v:userDefs>
@@ -1795,11 +1795,11 @@
 				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
 				<v:ud v:nameU="AdjustWidthIfNoMemberPresent" v:prompt="" v:val="VT0(0):26"/>
 				<v:ud v:nameU="WidthMin" v:prompt="" v:val="VT0(1.5475162790762):1"/>
-				<v:ud v:nameU="EntityName" v:prompt="" v:val="VT4(EtherCatPacket)"/>
+				<v:ud v:nameU="EntityName" v:prompt="" v:val="VT4(ZwavePacket)"/>
 				<v:ud v:nameU="BackGrndLine" v:prompt="" v:val="VT5(#ffffff)"/>
 			</v:userDefs>
 			<title>Class.424</title>
-			<desc>EtherCatPacket</desc>
+			<desc>ZwavePacket</desc>
 			<g id="shape425-278" v:mID="425" v:groupContext="shape">
 				<title>Sheet.425</title>
 				<v:userDefs>
@@ -1823,7 +1823,7 @@
 					<v:ud v:nameU="Spacer" v:prompt="" v:val="VT0(0):26"/>
 					<v:ud v:nameU="UsableHgt" v:prompt="" v:val="VT0(0.4375):0"/>
 					<v:ud v:nameU="UmlRole" v:prompt="" v:val="VT4(ClassName)"/>
-					<v:ud v:nameU="UmlRole" v:prompt="" v:val="VT4(EtherCatPacket)"/>
+					<v:ud v:nameU="UmlRole" v:prompt="" v:val="VT4(ZwavePacket)"/>
 				</v:userDefs>
 				<path d="M0 792 L119.25 792 L119.25 760.5 L0 760.5 L0 792 Z" class="st5"/>
 			</g>
@@ -1842,7 +1842,7 @@
 			<g id="shape424-283" v:mID="424" v:groupContext="groupContent">
 				<v:textBlock v:margins="rect(8.5,4,8.5,4)"/>
 				<v:textRect cx="59.625" cy="745.496" width="119.25" height="31.4037"/>
-				<text x="4" y="749.1" class="st7" v:langID="1033"><v:paragraph/><v:tabList/>EtherCatPacket</text>			</g>
+				<text x="4" y="749.1" class="st7" v:langID="1033"><v:paragraph/><v:tabList/>ZwavePacket</text>			</g>
 		</g>
 		<g id="group429-285" transform="translate(668.813,-103.5)" v:mID="429" v:groupContext="group">
 			<v:userDefs>
