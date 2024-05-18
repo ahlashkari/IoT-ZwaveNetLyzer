@@ -15,13 +15,13 @@ Z-Wave Network Traffic Analyzer
 
 # Installation
 
-Before installing or running the NTLFlowLyzer package, it's essential to set up the necessary requirements on your system. Begin by ensuring you have both `Python` and `pip` installed and functioning properly (execute the `pip3 --version` command). Then, execute the following command:
+Before installing or running the ZwaveNetLyzer package, it's essential to set up the necessary requirements on your system. Begin by ensuring you have both `Python` and `pip` installed and functioning properly (execute the `pip3 --version` command). Then, execute the following command:
 
 ```bash
 pip3 install -r requirements.txt
 ```
 
-You are prepared to install NTLFlowLyzer. To proceed, execute the following command in the package's root directory (where the setup.py file is located), which will install the NTLFlowLyzer package on your system:
+You are prepared to install ZwaveNetLyzer. To proceed, execute the following command in the package's root directory (where the setup.py file is located), which will install the ZwaveNetLyzer package on your system:
 
 ### On Linux:
 ```bash
@@ -36,23 +36,23 @@ pip3 install .
 After successfully installing the package, confirm the installation by running the following command:
 
 ```bash
-ntlflowlyzer --version
+zwave-netlyzer --version
 ```
 
 
 # Execution
 
-The core aspect of running NTLFlowLyzer involves preparing the configuration file. This file is designed to facilitate users in customizing the program's behavior with minimal complexity and cost, thus enhancing program scalability. Below, we outline how to prepare the configuration file and subsequently demonstrate how to execute NTLFlowLyzer using it.
+The core aspect of running ZwaveNetLyzer involves preparing the configuration file. This file is designed to facilitate users in customizing the program's behavior with minimal complexity and cost, thus enhancing program scalability. Below, we outline how to prepare the configuration file and subsequently demonstrate how to execute ZwaveNetLyzer using it.
 
 
 ## Argument Parser
 
 You can use `-h` to see different options of the program.
 
-To execute NTLFlowLyzer, simply run the following command:
+To execute ZwaveNetLyzer, simply run the following command:
 
 ```bash
-ntlflowlyzer -c YOUR_CONFIG_FILE
+zwave-netlyzer -c YOUR_CONFIG_FILE
 ```
 
 Replace `YOUR_CONFIG_FILE` with the path to your configuration file.
