@@ -475,7 +475,7 @@ We currently have 401 features that are as follows (features' explanation will b
 1. BwdCoefficientOfVariationPacketsTimeDelta
 1. Label
 
-# Citation & Copywrite (c) 2024  (#Citation-&-Copyright-(c)-2024)
+# Citation & Copywrite (c) 2024 
 
 For citation in your works and also understanding ZwaveNetLyzer completely, you can find below published papers:
 ```
