@@ -1,4 +1,4 @@
-# ZwaveNetLyzer
+# IoT-ZwaveNetLyzer
 Z-Wave Network Traffic Analyzer
 
 # Table of Contents
