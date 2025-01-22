@@ -3,7 +3,7 @@ Z-Wave Network Traffic Analyzer
 
 # Table of Contents
 
-- [ZwaveNetLyzer](#zwavenetlyzer)
+- [IoT-ZwaveNetLyzer](#zwavenetlyzer)
 - [Table of Contents](#table-of-contents)
 - [Installation](#installation)
 - [Execution](#execution)
