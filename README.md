@@ -477,12 +477,11 @@ We currently have 401 features that are as follows (features' explanation will b
 1. BwdCoefficientOfVariationPacketsTimeDelta
 1. Label
 
-# Citation & Copywrite (c) 2024 
+# Citation & Copyright (c) 2025
 
-For citation in your works and also understanding ZwaveNetLyzer completely, you can find below published papers:
-```
-TO BE UPDATED
-```
+For citation in your works and also understanding NTLFlowLyzer completely, you can find below published papers:
+
+- "Toward Generating a Large-Scale IoT-Zwave Intrusion Detection Dataset: Smart Device Profiling, Intruders Behaviour, and Traffic Characterization", Mohammad Moein Shafi and Arash Habibi Lashkari, The Journal of Internet of Things, 2025.
 
 # Project Team members 
 
@@ -494,3 +493,6 @@ TO BE UPDATED
 
 Any contribution is welcome in the form of pull requests.
 
+# Acknowledgment
+
+This project has been made possible through funding from the Natural Sciences and Engineering Research Council of Canada — NSERC (#RGPIN-2020-04701) and Canada Research Chair (Tier II) - (#CRC-2021-00340) to Arash Habibi Lashkari.
