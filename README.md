@@ -1,7 +1,9 @@
 ![](https://github.com/ahlashkari/ALFlowLyzer/blob/main/bccc.jpg)
 
 # IoT-ZwaveNetLyzer
-Z-Wave Network Traffic Analyzer
+IoT-ZwaveNetLyzer is an open-source Python project developed for analyzing Z-Wave network traffic in IoT environments. It generates bidirectional traffic flows and extracts over 400 statistical and protocol-level features, such as signal strength (RSSI), packet speed, acknowledgment ratios, and channel usage patterns. By profiling both forward and backward communication streams, it enables a fine-grained understanding of device behavior and communication efficiency across smart home and industrial IoT networks.
+
+Designed for scalability and transparency, IoT-ZwaveNetLyzer supports both Linux and Windows environments and can be customized through simple configuration files, enabling flexible use in research and experimentation. The analyzer is a crucial tool for building and validating IoT intrusion detection systems, providing a structured framework to characterize device behavior, network stability, and traffic anomalies in both real and simulated environments.
 
 # Table of Contents
 
